@@ -1,0 +1,52 @@
+---
+import ArticleList from "../../components/ArticleList.astro";
+import SearchBox from "../../components/SearchBox.astro";
+import TagChip from "../../components/TagChip.astro";
+import { articles } from "../../data/articles";
+import { domains } from "../../data/domains";
+import type { StudyDomain } from "../../data/types";
+import { formatShortDate } from "../../lib/format";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  return domains.map((domain) => ({
+    params: { slug: domain.slug },
+    props: { domain },
+  }));
+}
+
+interface Props {
+  domain: StudyDomain;
+}
+
+const { domain } = Astro.props;
+const domainArticles = articles.filter((article) => article.domain === domain.slug);
+---
+
+<BaseLayout title={domain.name} description={domain.description}>
+  <main id="main-content" class="page-shell">
+    <header class="page-intro domain-intro">
+      <a class="back-link" href="/domains">Study domains</a>
+      <h1>{domain.name}</h1>
+      <p>{domain.description}</p>
+      <div class="domain-intro__topics">
+        {domain.topics.map((topic) => <TagChip label={topic} />)}
+      </div>
+      <p class="domain-intro__meta">
+        {domain.articleCount} {domain.articleCount === 1 ? "article" : "articles"}
+        <span aria-hidden="true">·</span>
+        Updated {formatShortDate(domain.lastUpdated)}
+      </p>
+      <div class="page-search">
+        <SearchBox id="content-search" placeholder={`Search ${domain.name}`} />
+      </div>
+    </header>
+    <div class="section-divider" aria-hidden="true"></div>
+    {domainArticles.length > 0 ? (
+      <ArticleList articles={domainArticles} label={`${domain.name} articles`} />
+    ) : (
+      <p class="domain-empty">Articles for this domain are being prepared.</p>
+    )}
+    <p class="empty-state" data-search-empty hidden>No articles match this search.</p>
+  </main>
+</BaseLayout>

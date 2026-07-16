@@ -1,0 +1,24 @@
+---
+import DomainCard from "../components/DomainCard.astro";
+import SearchBox from "../components/SearchBox.astro";
+import { domains } from "../data/domains";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Study Domains" description="Browse Overstudied articles by technical domain.">
+  <main id="main-content" class="page-shell">
+    <header class="page-intro section-intro">
+      <p class="page-kicker">Study domains</p>
+      <h1>Follow a subject, not a syllabus.</h1>
+      <p>Topic collections that bring related articles together without duplicating the underlying content.</p>
+      <div class="page-search">
+        <SearchBox id="content-search" placeholder="Search domains" />
+      </div>
+    </header>
+    <div class="section-divider" aria-hidden="true"></div>
+    <section class="domain-grid" aria-label="Study domains">
+      {domains.map((domain) => <DomainCard domain={domain} />)}
+    </section>
+    <p class="empty-state" data-search-empty hidden>No study domains match this search.</p>
+  </main>
+</BaseLayout>

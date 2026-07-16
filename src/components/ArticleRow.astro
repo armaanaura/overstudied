@@ -1,0 +1,37 @@
+---
+import type { Article } from "../data/types";
+import { formatShortDate } from "../lib/format";
+import TagChip from "./TagChip.astro";
+
+interface Props {
+  article: Article;
+}
+
+const { article } = Astro.props;
+const searchText = [article.title, article.excerpt, article.tags.join(" "), article.domain]
+  .filter(Boolean)
+  .join(" ")
+  .toLowerCase();
+---
+
+<article
+  class="article-row searchable-item"
+  id={article.slug}
+  data-searchable={searchText}
+  data-feed-type="article"
+>
+  <div class="article-row__copy">
+    <p class="byline">Armaandeep Singh <span aria-hidden="true"></span></p>
+    <h2><a href={`/articles/${article.slug}`}>{article.title}</a></h2>
+    <p class="article-row__excerpt">{article.excerpt}</p>
+    <div class="article-row__meta">
+      <TagChip label={article.tags[0]} />
+      <span>Posted on {formatShortDate(article.date)}</span>
+      <span>.</span>
+      <span>{article.readTime}</span>
+    </div>
+  </div>
+  <div class="article-row__thumbnail" aria-hidden={article.image ? undefined : "true"}>
+    {article.image && <img src={article.image.src} alt={article.image.alt} loading="lazy" />}
+  </div>
+</article>

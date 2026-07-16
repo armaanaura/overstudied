@@ -1,0 +1,30 @@
+---
+import type { StudyDomain } from "../data/types";
+import { formatShortDate } from "../lib/format";
+import TagChip from "./TagChip.astro";
+
+interface Props {
+  domain: StudyDomain;
+}
+
+const { domain } = Astro.props;
+const searchText = [domain.name, domain.description, domain.topics.join(" ")].join(" ").toLowerCase();
+---
+
+<article
+  class="domain-card searchable-item"
+  data-searchable={searchText}
+  data-feed-type="domain"
+>
+  <p class="domain-card__eyebrow">Study domain</p>
+  <h2><a href={`/domains/${domain.slug}`}>{domain.name}</a></h2>
+  <p class="domain-card__description">{domain.description}</p>
+  <div class="domain-card__topics">
+    {domain.topics.slice(0, 3).map((topic) => <TagChip label={topic} />)}
+  </div>
+  <p class="domain-card__meta">
+    {domain.articleCount} {domain.articleCount === 1 ? "article" : "articles"}
+    <span aria-hidden="true">·</span>
+    Updated {formatShortDate(domain.lastUpdated)}
+  </p>
+</article>

@@ -1,0 +1,52 @@
+---
+const year = new Date().getFullYear();
+
+const importantLinks = [
+  { label: "Home", href: "/" },
+  { label: "Articles", href: "/articles" },
+  { label: "Architectures", href: "/architectures" },
+  { label: "Algorithms", href: "/algorithms" },
+  { label: "Study Domains", href: "/domains" },
+  { label: "About Us", href: "/about" },
+];
+---
+
+<footer class="site-footer">
+  <div class="footer__inner">
+    <div class="footer__grid">
+      <section class="footer__company" aria-labelledby="footer-company">
+        <h2 id="footer-company">Overstudied</h2>
+        <p>Deep technical notes, architecture explainers, algorithms, and focused study domains.</p>
+      </section>
+
+      <nav class="footer__links" aria-labelledby="footer-links">
+        <h2 id="footer-links">Important links</h2>
+        <ul>
+          {importantLinks.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+        </ul>
+      </nav>
+
+      <section class="footer__contact" aria-labelledby="footer-contact">
+        <h2 id="footer-contact">Contact</h2>
+        <address>
+          <p>Armaandeep Singh</p>
+          <a href="https://in.linkedin.com/in/armaanaura" target="_blank" rel="noreferrer">
+            LinkedIn
+            <span class="visually-hidden"> (opens in a new tab)</span>
+          </a>
+        </address>
+      </section>
+
+      <section class="footer__author" aria-labelledby="footer-author">
+        <h2 id="footer-author">About the author</h2>
+        <p>
+          Software developer with experience in machine learning, MLOps, Databricks, and
+          generative AI.
+        </p>
+        <a href="/about">More about Armaandeep</a>
+      </section>
+    </div>
+
+    <p class="footer__legal">© {year} Overstudied. Built for focused technical learning.</p>
+  </div>
+</footer>

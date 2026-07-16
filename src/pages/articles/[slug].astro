@@ -1,0 +1,69 @@
+---
+import ArticleBody from "../../components/ArticleBody.astro";
+import ArticleNavigation from "../../components/ArticleNavigation.astro";
+import TagChip from "../../components/TagChip.astro";
+import { articles } from "../../data/articles";
+import { domains } from "../../data/domains";
+import type { Article } from "../../data/types";
+import { formatLongDate } from "../../lib/format";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  return articles.map((article, index) => ({
+    params: { slug: article.slug },
+    props: {
+      article,
+      newer: index > 0 ? articles[index - 1] : null,
+      older: index < articles.length - 1 ? articles[index + 1] : null,
+    },
+  }));
+}
+
+interface Props {
+  article: Article;
+  newer: Article | null;
+  older: Article | null;
+}
+
+const { article, newer, older } = Astro.props;
+const domain = domains.find((item) => item.slug === article.domain);
+---
+
+<BaseLayout title={article.title} description={article.excerpt}>
+  <main id="main-content" class="page-shell article-detail-page">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">/</span>
+      <a href="/articles">Articles</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{article.title}</span>
+    </nav>
+
+    <article>
+      <header class="article-detail__header">
+        <div class="article-detail__tags">
+          {article.tags.map((tag) => <TagChip label={tag} />)}
+        </div>
+        <h1>{article.title}</h1>
+        <p class="article-detail__excerpt">{article.excerpt}</p>
+        <div class="article-detail__meta">
+          <a href="/about">Armaandeep Singh</a>
+          <span aria-hidden="true">·</span>
+          <time datetime={article.date}>{formatLongDate(article.date)}</time>
+          <span aria-hidden="true">·</span>
+          <span>{article.readTime}</span>
+          {domain && (
+            <>
+              <span aria-hidden="true">·</span>
+              <a href={`/domains/${domain.slug}`}>{domain.name}</a>
+            </>
+          )}
+        </div>
+      </header>
+
+      <ArticleBody sections={article.content} />
+    </article>
+
+    <ArticleNavigation newer={newer} older={older} />
+  </main>
+</BaseLayout>

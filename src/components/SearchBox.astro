@@ -1,0 +1,18 @@
+---
+interface Props {
+  id: string;
+  placeholder?: string;
+  variant?: "navbar" | "page";
+}
+
+const { id, placeholder = "Search articles", variant = "page" } = Astro.props;
+---
+
+<form class:list={["search-box", `search-box--${variant}`]} role="search" data-search-form>
+  <label class="visually-hidden" for={id}>Search Overstudied</label>
+  <svg class="search-box__icon" viewBox="0 0 20 20" aria-hidden="true">
+    <circle cx="8.5" cy="8.5" r="4.75"></circle>
+    <path d="m12 12 4 4"></path>
+  </svg>
+  <input id={id} name="q" type="search" placeholder={placeholder} autocomplete="off" />
+</form>

@@ -1,0 +1,29 @@
+---
+import ArticleList from "../components/ArticleList.astro";
+import SearchBox from "../components/SearchBox.astro";
+import TagChip from "../components/TagChip.astro";
+import { articles } from "../data/articles";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const algorithmArticles = articles.filter((article) => article.domain === "dsa");
+const topics = ["Dynamic Programming", "Graphs", "Trees", "Complexity"];
+---
+
+<BaseLayout title="Algorithms" description="Algorithm and data structure explanations from Overstudied.">
+  <main id="main-content" class="page-shell">
+    <header class="page-intro section-intro">
+      <p class="page-kicker">Algorithms</p>
+      <h1>Algorithms, explained from first principles.</h1>
+      <p>Mental models, visual reasoning, complexity analysis, and implementation notes without template memorization.</p>
+      <div class="page-search">
+        <SearchBox id="content-search" placeholder="Search algorithms" />
+      </div>
+    </header>
+    <div class="topic-summary" aria-label="Algorithm topics">
+      {topics.map((topic) => <TagChip label={topic} />)}
+    </div>
+    <div class="section-divider" aria-hidden="true"></div>
+    <ArticleList articles={algorithmArticles} label="Algorithm articles" />
+    <p class="empty-state" data-search-empty hidden>No algorithms match this search.</p>
+  </main>
+</BaseLayout>

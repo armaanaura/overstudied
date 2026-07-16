@@ -1,0 +1,52 @@
+---
+import ArchitectureRow from "../components/ArchitectureRow.astro";
+import ArticleRow from "../components/ArticleRow.astro";
+import DomainCard from "../components/DomainCard.astro";
+import SearchBox from "../components/SearchBox.astro";
+import TopicTabs from "../components/TopicTabs.astro";
+import { architectures } from "../data/architectures";
+import { articles } from "../data/articles";
+import { domains } from "../data/domains";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const tabs = [
+  { label: "Latest", value: "latest" },
+  { label: "Articles", value: "article" },
+  { label: "Architectures", value: "architecture" },
+  { label: "Study Domains", value: "domain" },
+];
+
+const latest = [
+  ...articles.map((item) => ({ date: item.date, kind: "article" as const, item })),
+  ...architectures.map((item) => ({ date: item.date, kind: "architecture" as const, item })),
+  ...domains.map((item) => ({ date: item.lastUpdated, kind: "domain" as const, item })),
+].sort((a, b) => b.date.localeCompare(a.date));
+---
+
+<BaseLayout
+  title="Overstudied"
+  description="Deep technical notes, architecture explainers, and focused study domains."
+>
+  <main id="main-content" class="page-shell home-page">
+    <header class="page-intro home-intro">
+      <h1>Deep technical notes and project demos.</h1>
+      <p>
+        DSA, backend systems, AI experiments, and engineering breakdowns.<span class="desktop-intro-copy"> No noise, just the writing.</span>
+      </p>
+      <div class="page-search">
+        <SearchBox id="content-search" placeholder="Search articles" />
+      </div>
+    </header>
+
+    <TopicTabs items={tabs} current="latest" interactive />
+
+    <section class="mixed-feed" aria-label="Latest Overstudied content">
+      {latest.map((entry) => {
+        if (entry.kind === "article") return <ArticleRow article={entry.item} />;
+        if (entry.kind === "architecture") return <ArchitectureRow architecture={entry.item} />;
+        return <div class="domain-feed-entry"><DomainCard domain={entry.item} /></div>;
+      })}
+      <p class="empty-state" data-search-empty hidden>No content matches this search.</p>
+    </section>
+  </main>
+</BaseLayout>

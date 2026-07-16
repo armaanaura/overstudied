@@ -1,0 +1,60 @@
+import type { StudyDomain } from "./types";
+
+export const domains: StudyDomain[] = [
+  {
+    name: "Databricks",
+    slug: "databricks",
+    description: "Lakehouse engineering, Spark workloads, SQL, governance, and production workflows.",
+    topics: ["Delta Lake", "Spark", "Workflows", "Unity Catalog"],
+    articleCount: 1,
+    lastUpdated: "2026-07-11",
+  },
+  {
+    name: "Snowflake",
+    slug: "snowflake",
+    description: "Warehousing patterns, incremental pipelines, performance, and platform operations.",
+    topics: ["Streams", "Tasks", "Warehousing", "Performance"],
+    articleCount: 1,
+    lastUpdated: "2026-07-09",
+  },
+  {
+    name: "GitHub Actions",
+    slug: "github-actions",
+    description: "CI/CD workflows, reusable automation, runners, artifacts, and platform patterns.",
+    topics: ["CI/CD", "Runners", "Artifacts", "Automation"],
+    articleCount: 0,
+    lastUpdated: "2026-07-12",
+  },
+  {
+    name: "Backend Systems",
+    slug: "backend-systems",
+    description: "APIs, distributed systems, queues, storage, reliability, and production tradeoffs.",
+    topics: ["APIs", "Queues", "Reliability", "Distributed Systems"],
+    articleCount: 1,
+    lastUpdated: "2026-07-15",
+  },
+  {
+    name: "DSA",
+    slug: "dsa",
+    description: "Algorithms and data structures taught through mental models, visuals, and implementation notes.",
+    topics: ["Dynamic Programming", "Graphs", "Trees", "Complexity"],
+    articleCount: 2,
+    lastUpdated: "2026-07-16",
+  },
+  {
+    name: "MLOps",
+    slug: "mlops",
+    description: "Training systems, feature platforms, deployment, observability, and model operations.",
+    topics: ["Feature Stores", "Deployment", "Monitoring", "Pipelines"],
+    articleCount: 1,
+    lastUpdated: "2026-07-06",
+  },
+  {
+    name: "AI Engineering",
+    slug: "ai-engineering",
+    description: "Reliable agents, evaluation, retrieval, tool use, and production AI application patterns.",
+    topics: ["Agents", "Evaluation", "RAG", "Tool Use"],
+    articleCount: 1,
+    lastUpdated: "2026-07-03",
+  },
+];

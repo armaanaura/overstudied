@@ -1,0 +1,78 @@
+---
+import SearchBox from "./SearchBox.astro";
+
+const currentPath = Astro.url.pathname;
+const hasPageSearch = ["/", "/articles", "/architectures", "/algorithms", "/domains"].includes(currentPath)
+  || currentPath.startsWith("/domains/");
+const mobileSearchHref = hasPageSearch ? "#content-search" : "/articles#content-search";
+const links = [
+  { label: "Articles", href: "/articles" },
+  { label: "Architectures", href: "/architectures" },
+  { label: "Algorithms", href: "/algorithms" },
+  { label: "Domains", href: "/domains" },
+  { label: "About Us", href: "/about" },
+];
+---
+
+<header class="site-header">
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="navbar__primary">
+      <a class="brand" href="/" aria-label="Overstudied home">Overstudied</a>
+      <div class="navbar__links">
+        {links.map((link) => (
+          <a
+            href={link.href}
+            aria-current={currentPath.startsWith(link.href) ? "page" : undefined}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </div>
+    <div class="navbar__tools">
+      <div class="navbar__search">
+        <SearchBox id="nav-search" placeholder="Search" variant="navbar" />
+      </div>
+      <button class="theme-toggle" type="button" aria-label="Change theme" data-theme-toggle>
+        <span class="theme-toggle__option" data-mode="light">Light</span>
+        <span class="theme-toggle__option" data-mode="dark">Dark</span>
+        <span class="theme-toggle__option" data-mode="reading">Reading</span>
+      </button>
+      <a class="navbar__mobile-search" href={mobileSearchHref} aria-label="Open article search">
+        <svg viewBox="0 0 20 20" aria-hidden="true">
+          <circle cx="8.5" cy="8.5" r="4.75"></circle>
+          <path d="m12 12 4 4"></path>
+        </svg>
+      </a>
+    </div>
+  </nav>
+</header>
+
+<script is:inline>
+  const modes = ["light", "dark", "reading"];
+  const root = document.documentElement;
+  const toggles = document.querySelectorAll("[data-theme-toggle]");
+
+  let currentMode = localStorage.getItem("theme") || "light";
+
+  function applyTheme(mode) {
+    root.dataset.theme = mode;
+    localStorage.setItem("theme", mode);
+
+    document.querySelectorAll("[data-theme-toggle]").forEach((toggle) => {
+      toggle.querySelectorAll("[data-mode]").forEach((item) => {
+        item.classList.toggle("is-active", item.dataset.mode === mode);
+      });
+    });
+  }
+
+  applyTheme(currentMode);
+
+  toggles.forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+      const currentIndex = modes.indexOf(currentMode);
+      currentMode = modes[(currentIndex + 1) % modes.length];
+      applyTheme(currentMode);
+    });
+  });
+</script>
