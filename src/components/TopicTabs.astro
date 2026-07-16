@@ -1,0 +1,43 @@
+---
+export interface TopicTab {
+  label: string;
+  value: string;
+  href?: string;
+}
+
+interface Props {
+  items: TopicTab[];
+  current: string;
+  label?: string;
+  interactive?: boolean;
+}
+
+const {
+  items,
+  current,
+  label = "Content filters",
+  interactive = false,
+} = Astro.props;
+---
+
+<div class="topic-tabs" aria-label={label} role={interactive ? "tablist" : undefined}>
+  {items.map((item) => interactive ? (
+    <button
+      class:list={["topic-tab", { "is-active": item.value === current }]}
+      type="button"
+      role="tab"
+      aria-selected={item.value === current ? "true" : "false"}
+      data-topic-filter={item.value}
+    >
+      {item.label}
+    </button>
+  ) : (
+    <a
+      class:list={["topic-tab", { "is-active": item.value === current }]}
+      href={item.href ?? "#"}
+      aria-current={item.value === current ? "page" : undefined}
+    >
+      {item.label}
+    </a>
+  ))}
+</div>

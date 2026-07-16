@@ -1,0 +1,87 @@
+---
+import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const pageTitle = title === "Overstudied" ? title : `${title} · Overstudied`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <script is:inline>
+      (() => {
+        try {
+          const modes = ["light", "dark", "reading"];
+          const savedTheme = localStorage.getItem("theme");
+          document.documentElement.dataset.theme = modes.includes(savedTheme) ? savedTheme : "light";
+        } catch {
+          document.documentElement.dataset.theme = "light";
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <Navbar />
+    <slot />
+    <Footer />
+    <script>
+      const state = { query: "", filter: "latest" };
+
+      const refreshFeed = () => {
+        const items = Array.from(document.querySelectorAll<HTMLElement>(".searchable-item"));
+        let visibleCount = 0;
+
+        items.forEach((item) => {
+          const searchable = item.dataset.searchable ?? "";
+          const itemType = item.dataset.feedType;
+          const matchesQuery = searchable.includes(state.query);
+          const matchesFilter = state.filter === "latest" || itemType === state.filter;
+          const isVisible = matchesQuery && matchesFilter;
+          item.hidden = !isVisible;
+          if (isVisible) visibleCount += 1;
+        });
+
+        document.querySelectorAll<HTMLElement>("[data-search-empty]").forEach((message) => {
+          message.hidden = visibleCount !== 0;
+        });
+      };
+
+      document.querySelectorAll<HTMLFormElement>("[data-search-form]").forEach((form) => {
+        const input = form.querySelector<HTMLInputElement>("input[type='search']");
+        if (!input) return;
+
+        form.addEventListener("submit", (event) => event.preventDefault());
+        input.addEventListener("input", () => {
+          state.query = input.value.trim().toLowerCase();
+          refreshFeed();
+        });
+      });
+
+      document.querySelectorAll<HTMLButtonElement>("[data-topic-filter]").forEach((button) => {
+        button.addEventListener("click", () => {
+          state.filter = button.dataset.topicFilter ?? "latest";
+          document.querySelectorAll<HTMLButtonElement>("[data-topic-filter]").forEach((tab) => {
+            const isActive = tab === button;
+            tab.classList.toggle("is-active", isActive);
+            tab.setAttribute("aria-selected", String(isActive));
+          });
+          refreshFeed();
+        });
+      });
+
+    </script>
+  </body>
+</html>

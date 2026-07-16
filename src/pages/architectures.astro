@@ -1,0 +1,24 @@
+---
+import ArchitectureRow from "../components/ArchitectureRow.astro";
+import SearchBox from "../components/SearchBox.astro";
+import { architectures } from "../data/architectures";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Architectures" description="Large system design and architecture explainers from Overstudied.">
+  <main id="main-content" class="page-shell">
+    <header class="page-intro section-intro">
+      <p class="page-kicker">Architectures</p>
+      <h1>Large systems, explained end to end.</h1>
+      <p>Architecture breakdowns that connect components, tradeoffs, failure modes, and operating reality.</p>
+      <div class="page-search">
+        <SearchBox id="content-search" placeholder="Search architectures" />
+      </div>
+    </header>
+    <div class="section-divider" aria-hidden="true"></div>
+    <section class="article-list" aria-label="Architecture explainers">
+      {architectures.map((architecture) => <ArchitectureRow architecture={architecture} />)}
+    </section>
+    <p class="empty-state" data-search-empty hidden>No architectures match this search.</p>
+  </main>
+</BaseLayout>

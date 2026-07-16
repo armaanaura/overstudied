@@ -1,0 +1,26 @@
+---
+import type { Article } from "../data/types";
+
+interface Props {
+  newer: Article | null;
+  older: Article | null;
+}
+
+const { newer, older } = Astro.props;
+---
+
+<nav class="article-navigation" aria-label="Article navigation">
+  {newer ? (
+    <a href={`/articles/${newer.slug}`}>
+      <span>Newer article</span>
+      <strong>{newer.title}</strong>
+    </a>
+  ) : <span aria-hidden="true"></span>}
+
+  {older ? (
+    <a class="article-navigation__older" href={`/articles/${older.slug}`}>
+      <span>Older article</span>
+      <strong>{older.title}</strong>
+    </a>
+  ) : <span aria-hidden="true"></span>}
+</nav>

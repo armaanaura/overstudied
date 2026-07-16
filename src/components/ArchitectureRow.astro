@@ -1,0 +1,42 @@
+---
+import type { Architecture } from "../data/types";
+import { formatShortDate } from "../lib/format";
+import TagChip from "./TagChip.astro";
+
+interface Props {
+  architecture: Architecture;
+}
+
+const { architecture } = Astro.props;
+const searchText = [
+  architecture.title,
+  architecture.excerpt,
+  architecture.tags.join(" "),
+  architecture.systemsCovered.join(" "),
+  architecture.complexity,
+].join(" ").toLowerCase();
+---
+
+<article
+  class="article-row architecture-row searchable-item"
+  id={architecture.slug}
+  data-searchable={searchText}
+  data-feed-type="architecture"
+>
+  <div class="article-row__copy">
+    <p class="byline">Architecture <span aria-hidden="true">·</span> {formatShortDate(architecture.date)}</p>
+    <h2><a href={`/architectures#${architecture.slug}`}>{architecture.title}</a></h2>
+    <p class="article-row__excerpt">{architecture.excerpt}</p>
+    <div class="article-row__meta architecture-row__meta">
+      <TagChip label={architecture.tags[0]} />
+      <span>{architecture.readTime}</span>
+      <span>{architecture.complexity}</span>
+    </div>
+    <p class="architecture-row__systems">
+      <span>Systems covered:</span> {architecture.systemsCovered.join(", ")}
+    </p>
+  </div>
+  <div class="article-row__thumbnail" aria-hidden={architecture.image ? undefined : "true"}>
+    {architecture.image && <img src={architecture.image.src} alt={architecture.image.alt} loading="lazy" />}
+  </div>
+</article>

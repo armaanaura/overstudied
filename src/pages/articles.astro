@@ -1,0 +1,22 @@
+---
+import ArticleList from "../components/ArticleList.astro";
+import SearchBox from "../components/SearchBox.astro";
+import { articles } from "../data/articles";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Articles" description="Technical articles from Overstudied, ordered by latest date.">
+  <main id="main-content" class="page-shell">
+    <header class="page-intro section-intro">
+      <p class="page-kicker">Articles</p>
+      <h1>Technical notes, latest first.</h1>
+      <p>Focused explanations for algorithms, backend systems, data platforms, MLOps, and AI engineering.</p>
+      <div class="page-search">
+        <SearchBox id="content-search" placeholder="Search articles" />
+      </div>
+    </header>
+    <div class="section-divider" aria-hidden="true"></div>
+    <ArticleList articles={articles} />
+    <p class="empty-state" data-search-empty hidden>No articles match this search.</p>
+  </main>
+</BaseLayout>

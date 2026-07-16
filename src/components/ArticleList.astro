@@ -1,0 +1,15 @@
+---
+import type { Article } from "../data/types";
+import ArticleRow from "./ArticleRow.astro";
+
+interface Props {
+  articles: Article[];
+  label?: string;
+}
+
+const { articles, label = "Articles" } = Astro.props;
+---
+
+<section class="article-list" aria-label={label}>
+  {articles.map((article) => <ArticleRow article={article} />)}
+</section>
