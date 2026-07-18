@@ -1,6 +1,7 @@
 ---
 import Footer from "../components/Footer.astro";
 import Navbar from "../components/Navbar.astro";
+import logoWhite from "../Assets/logo_white.png";
 import "../styles/global.css";
 
 interface Props {
@@ -19,6 +20,7 @@ const pageTitle = title === "Overstudied" ? title : `${title} · Overstudied`;
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/png" href={logoWhite.src} />
     <title>{pageTitle}</title>
     <script is:inline>
       (() => {
