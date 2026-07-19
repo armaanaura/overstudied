@@ -65,4 +65,28 @@ Article bodies are canonical too: keep the typed `content` sections on the match
 
 The homepage constructs a dated union of all three buckets at build time and sorts it descending. A domain uses `lastUpdated` as its feed date.
 
-Images are optional. When `image` is absent, rows render a blank surface with a thin border—never a generated label, colored placeholder, or invented image. When an image is supplied, meaningful `alt` text is required.
+## Content images
+
+Store content images under `public/images` using the content slug as the filename:
+
+```text
+public/
+  images/
+    articles/
+      <article-slug>.webp
+    architectures/
+      <architecture-slug>.webp
+```
+
+Files in `public` are served from the site root. Add an article image to its canonical record in `src/data/articles.ts`:
+
+```ts
+image: {
+  src: "/images/articles/knapsack-merging-without-fear.webp",
+  alt: "Diagram showing tree knapsack states being merged",
+},
+```
+
+Architecture records use the equivalent `/images/architectures/<slug>.webp` path. Prefer a 3:2 image because feed thumbnails render at 180×120px. Use WebP where practical, keep filenames lowercase and kebab-cased, and write alt text that describes the image rather than repeating the article title.
+
+Images are optional. When `image` is absent, rows render a blank surface—never a generated label, colored placeholder, or invented image. When an image is supplied, meaningful `alt` text is required.
