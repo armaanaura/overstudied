@@ -1,8 +1,12 @@
 ---
 import type { ArticleSection } from "../data/types";
 
+type NavigableArticleSection = ArticleSection & {
+  id?: string;
+};
+
 interface Props {
-  sections: ArticleSection[];
+  sections: NavigableArticleSection[];
 }
 
 const { sections } = Astro.props;
@@ -10,7 +14,7 @@ const { sections } = Astro.props;
 
 <div class="article-body">
   {sections.map((section) => (
-    <section>
+    <section id={section.id} class="article-body__section">
       <h2>{section.heading}</h2>
       {section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
       {section.bullets && (

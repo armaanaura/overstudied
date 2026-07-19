@@ -585,8 +585,121 @@ select {
   line-height: 25px;
 }
 
+.article-detail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(260px, 3fr);
+  align-items: start;
+  width: 100%;
+}
+
+.article-detail__main {
+  min-width: 0;
+}
+
 .article-detail-page {
   padding-top: 38px;
+}
+
+.article-detail__cover {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.article-detail__cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.article-toc-panel {
+  align-self: stretch;
+  min-width: 0;
+  min-height: 100%;
+  padding: 38px 32px 72px;
+  border-left: 1px solid var(--line);
+}
+
+.article-toc--desktop {
+  position: sticky;
+  top: 24px;
+}
+
+.article-toc--mobile {
+  display: none;
+}
+
+.article-toc p {
+  margin: 0 0 14px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.article-toc ol {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0 0 0 30px;
+  list-style: none;
+}
+
+.article-toc ol::before {
+  position: absolute;
+  top: 17px;
+  bottom: 17px;
+  left: 5px;
+  width: 1px;
+  background: var(--line);
+  content: "";
+}
+
+.article-toc li {
+  min-width: 0;
+}
+
+.article-toc a {
+  position: relative;
+  display: block;
+  padding: 9px 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.article-toc a::before {
+  position: absolute;
+  top: 14px;
+  left: -29px;
+  width: 9px;
+  height: 9px;
+  border: 1px solid var(--muted);
+  border-radius: 999px;
+  background: var(--bg);
+  box-shadow: 0 0 0 4px var(--bg);
+  content: "";
+}
+
+.article-toc a:hover,
+.article-toc a.is-active {
+  color: var(--text);
+}
+
+.article-toc a:hover::before {
+  border-color: var(--text);
+}
+
+.article-toc a.is-active {
+  font-weight: 600;
+}
+
+.article-toc a.is-active::before {
+  border-color: var(--text);
+  background: var(--text);
+  box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--line);
 }
 
 .breadcrumbs {
@@ -667,6 +780,10 @@ select {
 
 .article-body section + section {
   margin-top: 44px;
+}
+
+.article-body__section {
+  scroll-margin-top: 24px;
 }
 
 .article-body h2 {
@@ -907,6 +1024,24 @@ select {
     stroke: var(--muted);
     stroke-linecap: round;
     stroke-width: 1.4;
+  }
+}
+
+@media (max-width: 900px) {
+  .article-detail-layout {
+    display: block;
+  }
+
+  .article-toc-panel {
+    display: none;
+  }
+
+  .article-toc--mobile {
+    display: block;
+    margin-top: 28px;
+    padding: 20px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
   }
 }
 

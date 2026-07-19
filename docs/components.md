@@ -9,7 +9,7 @@
 | `TopicTabs` | Reusable tab/link row; the homepage uses its interactive filter mode |
 | `ArticleList` | Ordered rendering of article rows |
 | `ArticleRow` | Compact article metadata, title, excerpt, first tag, read time, and optional desktop image |
-| `ArticleBody` | Safe rendering of typed article sections, paragraphs, lists, and code blocks |
+| `ArticleBody` | Safe rendering of typed, anchor-addressable article sections, paragraphs, lists, and code blocks |
 | `ArticleNavigation` | Newer/older links at the end of every article detail page |
 | `TagChip` | Neutral pill used only for taxonomy metadata |
 | `ArchitectureRow` | Compact architecture row with optional image, complexity, and systems covered |
