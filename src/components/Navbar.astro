@@ -1,4 +1,6 @@
 ---
+import SearchBox from "./SearchBox.astro";
+
 const currentPath = Astro.url.pathname;
 const hasPageSearch = ["/", "/articles", "/architectures", "/algorithms", "/domains"].includes(currentPath)
   || currentPath.startsWith("/domains/");
@@ -28,12 +30,29 @@ const links = [
       </div>
     </div>
     <div class="navbar__tools">
-      <a class="navbar__search" href={mobileSearchHref} aria-label="Open article search">
+      <button class="navbar__search-button" type="button" aria-label="Open search" aria-expanded="false" data-navbar-search-toggle>
         <svg viewBox="0 0 20 20" aria-hidden="true">
           <circle cx="8.5" cy="8.5" r="4.75"></circle>
           <path d="m12 12 4 4"></path>
         </svg>
-      </a>
+      </button>
+      <div class="navbar__search-dropdown" hidden data-navbar-search-dropdown>
+        <div class="navbar__search-panel">
+          <SearchBox id="nav-search" placeholder="Search Overstudied" variant="navbar" />
+          <div class="navbar__search-results">
+            <div class="navbar__search-results-section">
+              <h2>Quick Links</h2>
+              <ul>
+                {links.map((link) => (
+                  <li>
+                    <a href={link.href} class="navbar__search-result-link">{link.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
       <button class="theme-toggle" type="button" aria-label="Toggle theme" data-theme-toggle>
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5" />
