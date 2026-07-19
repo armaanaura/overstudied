@@ -30,13 +30,34 @@ const links = [
       </div>
     </div>
     <div class="navbar__tools">
-      <div class="navbar__search">
-        <SearchBox id="nav-search" placeholder="Search" variant="navbar" />
+      <button class="navbar__search-button" type="button" aria-label="Open search" aria-expanded="false" data-navbar-search-toggle>
+        <svg viewBox="0 0 20 20" aria-hidden="true">
+          <circle cx="8.5" cy="8.5" r="4.75"></circle>
+          <path d="m12 12 4 4"></path>
+        </svg>
+      </button>
+      <div class="navbar__search-dropdown" hidden data-navbar-search-dropdown>
+        <div class="navbar__search-panel">
+          <SearchBox id="nav-search" placeholder="Search Overstudied" variant="navbar" />
+          <div class="navbar__search-results">
+            <div class="navbar__search-results-section">
+              <h2>Quick Links</h2>
+              <ul>
+                {links.map((link) => (
+                  <li>
+                    <a href={link.href} class="navbar__search-result-link">{link.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-      <button class="theme-toggle" type="button" aria-label="Change theme" data-theme-toggle>
-        <span class="theme-toggle__option" data-mode="light">Light</span>
-        <span class="theme-toggle__option" data-mode="dark">Dark</span>
-        <span class="theme-toggle__option" data-mode="reading">Reading</span>
+      <button class="theme-toggle" type="button" aria-label="Toggle theme" data-theme-toggle>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5" />
+          <path d="M12 1.75v3.5M12 18.75v3.5M4.22 4.22l2.48 2.48M17.3 17.3l2.48 2.48M1.75 12h3.5M18.75 12h3.5M4.22 19.78l2.48-2.48M17.3 6.7l2.48-2.48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+        </svg>
       </button>
       <a class="navbar__mobile-search" href={mobileSearchHref} aria-label="Open article search">
         <svg viewBox="0 0 20 20" aria-hidden="true">

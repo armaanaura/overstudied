@@ -72,6 +72,53 @@ const pageTitle = title === "Overstudied" ? title : `${title} · Overstudied`;
         });
       });
 
+      const searchToggle = document.querySelector<HTMLButtonElement>("[data-navbar-search-toggle]");
+      const searchDropdown = document.querySelector<HTMLElement>("[data-navbar-search-dropdown]");
+
+      const closeSearchDropdown = () => {
+        if (!searchDropdown || !searchToggle) return;
+        searchDropdown.hidden = true;
+        searchToggle.setAttribute("aria-expanded", "false");
+      };
+
+      const openSearchDropdown = () => {
+        if (!searchDropdown || !searchToggle) return;
+        searchDropdown.hidden = false;
+        searchToggle.setAttribute("aria-expanded", "true");
+        const input = searchDropdown.querySelector<HTMLInputElement>("input[type='search']");
+        input?.focus();
+      };
+
+      if (searchToggle && searchDropdown) {
+        searchToggle.addEventListener("click", (event) => {
+          event.stopPropagation();
+          if (searchDropdown.hidden) {
+            openSearchDropdown();
+          } else {
+            closeSearchDropdown();
+          }
+        });
+
+        document.addEventListener("click", (event) => {
+          if (
+            searchDropdown &&
+            !searchDropdown.hidden &&
+            !searchDropdown.contains(event.target as Node) &&
+            searchToggle &&
+            !searchToggle.contains(event.target as Node)
+          ) {
+            closeSearchDropdown();
+          }
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") {
+            closeSearchDropdown();
+            searchToggle?.focus();
+          }
+        });
+      }
+
       document.querySelectorAll<HTMLButtonElement>("[data-topic-filter]").forEach((button) => {
         button.addEventListener("click", () => {
           state.filter = button.dataset.topicFilter ?? "latest";
