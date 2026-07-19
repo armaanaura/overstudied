@@ -27,43 +27,137 @@ interface Props {
 
 const { article, newer, older } = Astro.props;
 const domain = domains.find((item) => item.slug === article.domain);
+const sections = article.content.map((section, index) => {
+  const headingSlug = section.heading
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+
+  return {
+    ...section,
+    id: `section-${index + 1}-${headingSlug || "topic"}`,
+  };
+});
 ---
 
 <BaseLayout title={article.title} description={article.excerpt}>
-  <main id="main-content" class="page-shell article-detail-page">
-    <nav class="breadcrumbs" aria-label="Breadcrumb">
-      <a href="/">Home</a>
-      <span aria-hidden="true">/</span>
-      <a href="/articles">Articles</a>
-      <span aria-hidden="true">/</span>
-      <span aria-current="page">{article.title}</span>
-    </nav>
+  <main id="main-content" class="article-detail-layout">
+    <div class="article-detail__main">
+      {article.image && (
+        <figure class="article-detail__cover">
+          <img
+            src={article.image.src}
+            alt={article.image.alt}
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+          />
+        </figure>
+      )}
 
-    <article>
-      <header class="article-detail__header">
-        <div class="article-detail__tags">
-          {article.tags.map((tag) => <TagChip label={tag} />)}
-        </div>
-        <h1>{article.title}</h1>
-        <p class="article-detail__excerpt">{article.excerpt}</p>
-        <div class="article-detail__meta">
-          <a href="/about">Armaandeep Singh</a>
-          <span aria-hidden="true">·</span>
-          <time datetime={article.date}>{formatLongDate(article.date)}</time>
-          <span aria-hidden="true">·</span>
-          <span>{article.readTime}</span>
-          {domain && (
-            <>
+      <div class="page-shell article-detail-page">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span aria-hidden="true">/</span>
+          <a href="/articles">Articles</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">{article.title}</span>
+        </nav>
+
+        <article>
+          <header class="article-detail__header">
+            <div class="article-detail__tags">
+              {article.tags.map((tag) => <TagChip label={tag} />)}
+            </div>
+            <h1>{article.title}</h1>
+            <p class="article-detail__excerpt">{article.excerpt}</p>
+            <div class="article-detail__meta">
+              <a href="/about">Armaandeep Singh</a>
               <span aria-hidden="true">·</span>
-              <a href={`/domains/${domain.slug}`}>{domain.name}</a>
-            </>
-          )}
-        </div>
-      </header>
+              <time datetime={article.date}>{formatLongDate(article.date)}</time>
+              <span aria-hidden="true">·</span>
+              <span>{article.readTime}</span>
+              {domain && (
+                <>
+                  <span aria-hidden="true">·</span>
+                  <a href={`/domains/${domain.slug}`}>{domain.name}</a>
+                </>
+              )}
+            </div>
+          </header>
 
-      <ArticleBody sections={article.content} />
-    </article>
+          <nav class="article-toc article-toc--mobile" aria-label="Article sections">
+            <p>On this page</p>
+            <ol>
+              {sections.map((section) => (
+                <li><a href={`#${section.id}`} data-article-toc-link>{section.heading}</a></li>
+              ))}
+            </ol>
+          </nav>
 
-    <ArticleNavigation newer={newer} older={older} />
+          <ArticleBody sections={sections} />
+        </article>
+
+        <ArticleNavigation newer={newer} older={older} />
+      </div>
+    </div>
+
+    <aside class="article-toc-panel">
+      <nav class="article-toc article-toc--desktop" aria-label="Article sections">
+        <p>On this page</p>
+        <ol>
+          {sections.map((section) => (
+            <li><a href={`#${section.id}`} data-article-toc-link>{section.heading}</a></li>
+          ))}
+        </ol>
+      </nav>
+    </aside>
   </main>
+
+  <script>
+    const tocLinks = Array.from(
+      document.querySelectorAll<HTMLAnchorElement>("[data-article-toc-link]"),
+    );
+    const sectionIds = [...new Set(tocLinks.map((link) => link.hash.slice(1)))];
+    const articleSections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((section): section is HTMLElement => Boolean(section));
+
+    const setActiveSection = (id: string) => {
+      tocLinks.forEach((link) => {
+        const isActive = link.hash === `#${id}`;
+        link.classList.toggle("is-active", isActive);
+        if (isActive) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      });
+    };
+
+    let updateQueued = false;
+    const updateActiveSection = () => {
+      updateQueued = false;
+      const readingLine = window.scrollY + window.innerHeight * 0.3;
+      let activeSection = articleSections[0];
+
+      articleSections.forEach((section) => {
+        if (section.offsetTop <= readingLine) activeSection = section;
+      });
+
+      if (activeSection) setActiveSection(activeSection.id);
+    };
+
+    const queueActiveSectionUpdate = () => {
+      if (updateQueued) return;
+      updateQueued = true;
+      requestAnimationFrame(updateActiveSection);
+    };
+
+    tocLinks.forEach((link) => {
+      link.addEventListener("click", () => setActiveSection(link.hash.slice(1)));
+    });
+    window.addEventListener("scroll", queueActiveSectionUpdate, { passive: true });
+    window.addEventListener("resize", queueActiveSectionUpdate);
+    window.addEventListener("load", updateActiveSection, { once: true });
+    updateActiveSection();
+  </script>
 </BaseLayout>

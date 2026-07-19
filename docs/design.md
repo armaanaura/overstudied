@@ -31,6 +31,8 @@ The desktop navbar is 72px tall with a 1px bottom border. The segmented theme to
 
 Domain cards are the only card-style UI. They use a 1px border, 4px radius, white background, and no shadow.
 
+Article detail pages use a 70:30 desktop split. The left column contains the optional cover image, article header, complete body, and article navigation. The right column contains a sticky table of contents generated from the article subheadings. Clicking an outline link navigates to its section, and scrolling updates the active link. Below 900px, the right panel collapses into an inline outline within the article column.
+
 ## Themes and footer
 
 The site supports three token-driven themes:
