@@ -98,6 +98,10 @@ export const articles: Article[] = [
     readTime: "10 min read",
     slug: "binary-lifting-finally-visualized",
     domain: "dsa",
+    image: {
+      src: "/images/articles/binary-lifting-finally-visualized.png",
+      alt: "Visualization of a binary lifting jump table",
+    },
     content: [
       {
         heading: "A jump table is a set of powers of two",
