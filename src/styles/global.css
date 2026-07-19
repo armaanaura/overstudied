@@ -10,6 +10,7 @@
   --thumbnail-text: #adadad;
   --max-width: 800px;
   --page-gutter: 20px;
+  --header-height: 49px;
   color-scheme: light;
   font-family: Inter, "Helvetica Neue", Arial, sans-serif;
   font-synthesis: none;
@@ -46,6 +47,7 @@ html[data-theme="reading"] {
 html {
   background: var(--bg);
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 24px);
 }
 
 body {
@@ -112,8 +114,12 @@ select {
 }
 
 .site-header {
-  height: 73px;
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  height: var(--header-height);
   border-bottom: 1px solid var(--line);
+  background: var(--bg);
 }
 
 .navbar {
@@ -123,7 +129,7 @@ select {
   justify-content:space-around;
   gap: 32px;
   width: 100%;
-  height: 72px;
+  height: 48px;
   padding: 0 64px;
 }
 
@@ -136,8 +142,8 @@ select {
 
 .brand {
   width: max-content;
-  font-size: 24px;
-  font-weight: 800;
+  font-size: 18px;
+  font-weight: 500;
   line-height: 28px;
   letter-spacing: -0.03em;
 }
@@ -179,22 +185,37 @@ select {
 }
 
 .navbar__search {
-  flex: 0 1 360px;
-  min-width: 220px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  min-width: 0;
+}
+
+.navbar__search svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: var(--muted);
+  stroke-linecap: round;
+  stroke-width: 1.4;
 }
 
 .theme-toggle {
   display: inline-flex;
   flex: 0 0 auto;
   align-items: center;
-  gap: 2px;
-  padding: 4px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--chip);
+  justify-content: center;
+  padding: 6px;
+  border: none;
+  background: transparent;
   color: var(--muted);
   cursor: pointer;
-  white-space: nowrap;
+}
+
+.theme-toggle svg {
+  width: 16px;
+  height: 16px;
 }
 
 .theme-toggle__option {
@@ -623,7 +644,7 @@ select {
 
 .article-toc--desktop {
   position: sticky;
-  top: 24px;
+  top: calc(var(--header-height) + 24px);
 }
 
 .article-toc--mobile {
@@ -783,7 +804,7 @@ select {
 }
 
 .article-body__section {
-  scroll-margin-top: 24px;
+  scroll-margin-top: calc(var(--header-height) + 24px);
 }
 
 .article-body h2 {

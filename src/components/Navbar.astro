@@ -1,6 +1,4 @@
 ---
-import SearchBox from "./SearchBox.astro";
-
 const currentPath = Astro.url.pathname;
 const hasPageSearch = ["/", "/articles", "/architectures", "/algorithms", "/domains"].includes(currentPath)
   || currentPath.startsWith("/domains/");
@@ -30,13 +28,17 @@ const links = [
       </div>
     </div>
     <div class="navbar__tools">
-      <div class="navbar__search">
-        <SearchBox id="nav-search" placeholder="Search" variant="navbar" />
-      </div>
-      <button class="theme-toggle" type="button" aria-label="Change theme" data-theme-toggle>
-        <span class="theme-toggle__option" data-mode="light">Light</span>
-        <span class="theme-toggle__option" data-mode="dark">Dark</span>
-        <span class="theme-toggle__option" data-mode="reading">Reading</span>
+      <a class="navbar__search" href={mobileSearchHref} aria-label="Open article search">
+        <svg viewBox="0 0 20 20" aria-hidden="true">
+          <circle cx="8.5" cy="8.5" r="4.75"></circle>
+          <path d="m12 12 4 4"></path>
+        </svg>
+      </a>
+      <button class="theme-toggle" type="button" aria-label="Toggle theme" data-theme-toggle>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5" />
+          <path d="M12 1.75v3.5M12 18.75v3.5M4.22 4.22l2.48 2.48M17.3 17.3l2.48 2.48M1.75 12h3.5M18.75 12h3.5M4.22 19.78l2.48-2.48M17.3 6.7l2.48-2.48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+        </svg>
       </button>
       <a class="navbar__mobile-search" href={mobileSearchHref} aria-label="Open article search">
         <svg viewBox="0 0 20 20" aria-hidden="true">
