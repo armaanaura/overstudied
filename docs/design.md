@@ -10,7 +10,9 @@ Implement and verify against these frames:
 
 ## Visual direction
 
-Overstudied is an article-first, Medium-like reading feed. It is not a marketing site. The homepage starts with a compact editorial introduction, filters, and the latest content. Do not add a hero treatment, calls to action, gradients, animation, shadows, illustrations, or decorative sections.
+Overstudied is an article-first, Medium-like reading feed. It is not a marketing site. The homepage starts with the supplied full-width study illustration, a compact editorial introduction, filters, and the latest content. Do not add calls to action, gradients, animation, shadows, or additional decorative sections.
+
+The homepage illustration lives in a permanently white, full-width container directly below the navbar. It is bottom-aligned. To reserve more white space above it, change `--homepage-image-top-space` on `.home-hero__media` in `src/styles/global.css`.
 
 The Figma frames establish these tokens:
 
