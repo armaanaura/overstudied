@@ -1,32 +1,15 @@
 # Overstudied
 
-A minimal, article-first technical blog built with Astro, TypeScript, and plain CSS.
+**Become disgustingly over educated.**
 
-The site includes articles, architecture explainers, algorithms, study domains, an About page, a shared author/contact footer, and Light, Dark, and warm Reading themes.
+Overstudied is my space to publish what I learn and stay motivated to keep exploring new topics. I write about quantum physics and quantum computing, data structures and algorithms, artificial intelligence, research papers, psychology, and wherever curiosity leads next.
 
-Static article detail pages are generated from typed records in `src/data/articles.ts` and include breadcrumbs plus newer/older navigation.
+The goal is simple: study deeply, explain clearly, and build knowledge that compounds.
 
-## Run locally
+## How to contribute
 
-Requires Node.js 22.12 or newer.
+Ideas, corrections, and thoughtful discussions are always welcome. You can [raise a GitHub issue](https://github.com/armaanaura/overstudied/issues) or contact me directly:
 
-```sh
-npm install
-npm run dev
-```
-
-Open `http://localhost:4321`.
-
-## Production build
-
-```sh
-npm run check
-npm run build
-npm run preview
-```
-
-The static deployment output is written to `dist/`.
-
-## Project contract
-
-Read `docs/design.md`, `docs/routes.md`, `docs/components.md`, `docs/content-model.md`, and `docs/agent-rules.md` before changing the site. The linked Figma frames are the visual source of truth, and the homepage must remain a latest-content feed rather than a marketing landing page.
+- Email: [armaands.work@gmail.com](mailto:armaands.work@gmail.com)
+- LinkedIn: [Armaandeep Singh](https://in.linkedin.com/in/armaanaura)
+- Instagram: [@over_studied](https://www.instagram.com/over_studied/)
