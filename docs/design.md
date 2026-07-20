@@ -10,7 +10,9 @@ Implement and verify against these frames:
 
 ## Visual direction
 
-Overstudied is an article-first, Medium-like reading feed. It is not a marketing site. The homepage starts with a compact editorial introduction, filters, and the latest content. Do not add a hero treatment, calls to action, gradients, animation, shadows, illustrations, or decorative sections.
+Overstudied is an article-first, Medium-like reading feed. It is not a marketing site. The homepage starts with the supplied full-width study illustration, a compact editorial introduction, filters, and the latest content. Do not add calls to action, gradients, animation, shadows, or additional decorative sections.
+
+The homepage illustration lives in a permanently white, full-width container directly below the navbar. It is bottom-aligned. To reserve more white space above it, change `--homepage-image-top-space` on `.home-hero__media` in `src/styles/global.css`.
 
 The Figma frames establish these tokens:
 
@@ -26,6 +28,8 @@ The Figma frames establish these tokens:
 | `--max-width` | `800px` | Main feed width |
 
 Typography uses Inter when available, followed by Helvetica Neue and Arial. Desktop page titles are 42/52px, article titles are 28/36px, and body copy is 16/24px. Mobile page titles are 32/40px, article titles are 22/29px, and body copy is 14/22px.
+
+Article detail pages use a separate editorial stack that prefers `OpenAI Sans` and `OpenAI Sans Variable Scripts`, then falls back to Inter, Helvetica Neue, Arial, and sans-serif because the proprietary font files are not bundled with the project. Detail headlines use a responsive 48–64px display scale, section headings use 32px, and body copy uses 18px with a 1.55 line height. Mobile detail headlines use 40px, section headings use 28px, and body copy uses 17px.
 
 The desktop navbar is 72px tall with a 1px bottom border. The segmented theme toggle sits immediately to the right of the desktop search. The feed is centered at 800px. Desktop article rows include a 180×120 optional image area; missing images remain blank. Feed rows use a compact rhythm with 20px desktop separation and 18–20px mobile separation. At 1000px and below, navigation links and desktop search collapse while the theme toggle and search shortcut remain. At 640px and below, the toggle labels shorten to `L`, `D`, and `R`. At 720px and below, an in-page search field appears, thumbnails disappear, and the page uses 20px side gutters.
 

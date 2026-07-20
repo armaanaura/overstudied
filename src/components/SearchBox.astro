@@ -14,5 +14,14 @@ const { id, placeholder = "Search articles", variant = "page" } = Astro.props;
     <circle cx="8.5" cy="8.5" r="4.75"></circle>
     <path d="m12 12 4 4"></path>
   </svg>
-  <input id={id} name="q" type="search" placeholder={placeholder} autocomplete="off" />
+  <input
+    id={id}
+    name="q"
+    type="search"
+    placeholder={placeholder}
+    autocomplete="off"
+    autocorrect="off"
+    autocapitalize="off"
+    class="globalnav-searchfield-input"
+  />
 </form>
