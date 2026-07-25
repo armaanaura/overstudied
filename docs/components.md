@@ -13,7 +13,7 @@
 | `ArticleNavigation` | Newer/older links at the end of every article detail page |
 | `TagChip` | Neutral pill used only for taxonomy metadata |
 | `ArchitectureRow` | System-design content rendered with the same compact thumbnail-left presentation as `ArticleRow` |
-| `DomainCard` | Bordered domain summary that links to `/domains/[slug]` |
+| `DomainCard` | Square domain thumbnail, domain name, and one-line tagline linking to `/domains/[slug]` |
 
 Components are Astro components with typed props. Keep content in `src/data`, layout rules in `src/styles/global.css`, and page composition in `src/pages`. Avoid client frameworks: the current search/filter behavior needs only a small browser script in `BaseLayout`.
 

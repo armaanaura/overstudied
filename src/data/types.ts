@@ -16,8 +16,13 @@ export interface ArticleSection {
 }
 
 export type ArticleCategory =
+  | "databricks"
+  | "snowflake"
+  | "artificial-intelligence"
+  | "hardware"
   | "system-design"
   | "quantum-computing"
+  | "quantum-mechanics"
   | "psychology"
   | "dsa";
 
@@ -53,6 +58,8 @@ export interface Architecture {
 export interface StudyDomain {
   name: string;
   slug: ArticleCategory;
+  image?: ContentImage;
+  tagline: string;
   description: string;
   topics: string[];
   articleCount: number;

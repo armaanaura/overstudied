@@ -19,15 +19,31 @@ function stableIndex(value: string, length: number) {
   return hash % length;
 }
 
-export function getArticleThumbnail(
+function getAbstractThumbnail(
   image: Pick<ContentImage, "src" | "alt"> | undefined,
-  slug: string,
+  key: string,
+  fallbackAlt: string,
 ) {
   if (image) return image;
   if (abstractImages.length === 0) return undefined;
 
   return {
-    src: abstractImages[stableIndex(slug, abstractImages.length)],
-    alt: "Abstract artwork",
+    src: abstractImages[stableIndex(key, abstractImages.length)],
+    alt: fallbackAlt,
   } satisfies ContentImage;
+}
+
+export function getArticleThumbnail(
+  image: Pick<ContentImage, "src" | "alt"> | undefined,
+  slug: string,
+) {
+  return getAbstractThumbnail(image, slug, "Abstract artwork");
+}
+
+export function getDomainThumbnail(
+  image: Pick<ContentImage, "src" | "alt"> | undefined,
+  slug: string,
+  name: string,
+) {
+  return getAbstractThumbnail(image, `domain-${slug}`, `Abstract artwork for ${name}`);
 }

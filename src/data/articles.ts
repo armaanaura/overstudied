@@ -142,7 +142,7 @@ for j in 1..LOG-1:
     tags: ["Databricks", "Lakehouse"],
     readTime: "9 min read",
     slug: "practical-clustering-databricks-sql",
-    category: "system-design",
+    category: "databricks",
     content: [
       {
         heading: "Clustering is about data skipping",
@@ -180,7 +180,7 @@ for j in 1..LOG-1:
     tags: ["Snowflake", "Data Engineering"],
     readTime: "7 min read",
     slug: "snowflake-streams-tasks-pipeline",
-    category: "system-design",
+    category: "snowflake",
     content: [
       {
         heading: "Streams describe what changed",
@@ -218,7 +218,7 @@ for j in 1..LOG-1:
     tags: ["MLOps", "Features"],
     readTime: "11 min read",
     slug: "feature-stores-without-mystery",
-    category: "system-design",
+    category: "artificial-intelligence",
     content: [
       {
         heading: "A feature store connects two serving paths",
@@ -256,7 +256,7 @@ for j in 1..LOG-1:
     tags: ["AI Engineering", "Agents"],
     readTime: "12 min read",
     slug: "reliable-tool-calling-agents",
-    category: "system-design",
+    category: "artificial-intelligence",
     content: [
       {
         heading: "Treat the agent as a controlled loop",
@@ -282,6 +282,45 @@ for j in 1..LOG-1:
         paragraphs: [
           "Record the user goal, selected tool, validated arguments, result category, latency, and final outcome. These traces reveal whether failures come from reasoning, tool design, permissions, or unreliable dependencies.",
           "Evaluate complete trajectories rather than only the final answer. A successful result reached through unnecessary or risky actions is still a system defect worth fixing.",
+        ],
+      },
+    ],
+    type: "article",
+  },
+  {
+    title: "Quantum circuits without the mystery",
+    excerpt:
+      "A first-principles guide to qubits, gates, measurement, and reading a quantum circuit without treating it like magic.",
+    date: "2026-07-02",
+    tags: ["Quantum Computing", "Qubits"],
+    readTime: "9 min read",
+    slug: "quantum-circuits-without-the-mystery",
+    category: "quantum-computing",
+    content: [
+      {
+        heading: "A qubit stores amplitudes, not two classical values",
+        paragraphs: [
+          "A classical bit is observed as either zero or one. A qubit is described by two amplitudes whose squared magnitudes determine the probabilities of those outcomes when the qubit is measured.",
+          "The amplitudes can reinforce or cancel one another. That interference—not simply being in two states at once—is the useful resource quantum circuits are designed to control.",
+        ],
+      },
+      {
+        heading: "Gates reshape the state",
+        paragraphs: [
+          "Quantum gates are reversible transformations. A single-qubit gate can rotate amplitudes, while a controlled gate can make the evolution of one qubit depend on another.",
+        ],
+        bullets: [
+          "The X gate exchanges the zero and one amplitudes.",
+          "The H gate creates or removes an equal superposition.",
+          "Controlled gates connect qubits and can produce entanglement.",
+          "Gate order matters because quantum operations do not always commute.",
+        ],
+      },
+      {
+        heading: "Read the circuit from left to right",
+        paragraphs: [
+          "Each horizontal wire tracks one qubit through time. Apply gates column by column, update the joint state, and postpone measurement until the circuit explicitly requests it.",
+          "A circuit diagram describes one execution recipe. To estimate output probabilities, the same circuit must usually be run many times and the measurement results counted.",
         ],
       },
     ],
