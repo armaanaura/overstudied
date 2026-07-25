@@ -3,17 +3,12 @@ export interface ContentImage {
   alt: string;
 }
 
-export interface ArticleCodeBlock {
-  language: string;
-  code: string;
+export interface ContentAuthor {
+  name: string;
+  url?: string;
 }
 
-export interface ArticleSection {
-  heading: string;
-  paragraphs: string[];
-  bullets?: string[];
-  code?: ArticleCodeBlock;
-}
+export type ArticleCategory = string;
 
 export interface Article {
   title: string;
@@ -21,33 +16,22 @@ export interface Article {
   date: string;
   tags: string[];
   readTime: string;
+  author: ContentAuthor;
   slug: string;
-  domain?: string;
-  image?: ContentImage;
-  content: ArticleSection[];
+  category: ArticleCategory;
+  thumbnail?: ContentImage;
+  coverImage?: ContentImage;
+  contentFile: string;
   type: "article";
-}
-
-export type ArchitectureComplexity = "Intermediate" | "Advanced";
-
-export interface Architecture {
-  title: string;
-  excerpt: string;
-  date: string;
-  tags: string[];
-  readTime: string;
-  slug: string;
-  image?: ContentImage;
-  systemsCovered: string[];
-  complexity: ArchitectureComplexity;
-  type: "architecture";
 }
 
 export interface StudyDomain {
   name: string;
-  slug: string;
+  slug: ArticleCategory;
+  image?: ContentImage;
+  tagline: string;
   description: string;
   topics: string[];
   articleCount: number;
-  lastUpdated: string;
+  lastUpdated?: string;
 }

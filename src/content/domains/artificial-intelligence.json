@@ -1,0 +1,29 @@
+{
+  "domain": "artificial-intelligence",
+  "articles": [
+    {
+      "title": "Feature stores without the mystery",
+      "excerpt": "Online and offline features, point-in-time correctness, and the minimum infrastructure a team actually needs.",
+      "date": "2026-07-06",
+      "tags": ["MLOps", "Features"],
+      "readTime": "11 min read",
+      "author": { "name": "Armaandeep Singh", "url": "/about" },
+      "slug": "feature-stores-without-mystery",
+      "thumbnail": null,
+      "coverImage": null,
+      "contentFile": "articles/feature-stores-without-mystery.md"
+    },
+    {
+      "title": "Building reliable tool-calling agents",
+      "excerpt": "A grounded loop for tool selection, error recovery, and keeping agent behavior observable in production.",
+      "date": "2026-07-03",
+      "tags": ["AI Engineering", "Agents"],
+      "readTime": "12 min read",
+      "author": { "name": "Armaandeep Singh", "url": "/about" },
+      "slug": "reliable-tool-calling-agents",
+      "thumbnail": null,
+      "coverImage": null,
+      "contentFile": "articles/reliable-tool-calling-agents.md"
+    }
+  ]
+}

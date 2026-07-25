@@ -2,16 +2,23 @@
 import SearchBox from "./SearchBox.astro";
 
 const currentPath = Astro.url.pathname;
-const hasPageSearch = ["/", "/articles", "/architectures", "/algorithms", "/domains"].includes(currentPath)
+const hasPageSearch = ["/", "/articles", "/system-design", "/algorithms", "/domains"].includes(currentPath)
   || currentPath.startsWith("/domains/");
 const mobileSearchHref = hasPageSearch ? "#content-search" : "/articles#content-search";
 const links = [
   { label: "Articles", href: "/articles" },
-  { label: "Architectures", href: "/architectures" },
+  { label: "System Design", href: "/system-design" },
   { label: "Algorithms", href: "/algorithms" },
+  { label: "Psychology", href: "/domains/psychology" },
+  { label: "Quantum Computing", href: "/domains/quantum-computing" },
   { label: "Domains", href: "/domains" },
   { label: "About Us", href: "/about" },
 ];
+
+const isCurrentLink = (href: string) => {
+  if (href === "/domains") return currentPath === href;
+  return currentPath.startsWith(href);
+};
 ---
 
 <header class="site-header">
@@ -22,7 +29,7 @@ const links = [
         {links.map((link) => (
           <a
             href={link.href}
-            aria-current={currentPath.startsWith(link.href) ? "page" : undefined}
+            aria-current={isCurrentLink(link.href) ? "page" : undefined}
           >
             {link.label}
           </a>
@@ -65,6 +72,37 @@ const links = [
           <path d="m12 12 4 4"></path>
         </svg>
       </a>
+      <button
+        class="navbar__menu-toggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-navigation"
+        data-mobile-menu-toggle
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <div
+      class="navbar__mobile-menu"
+      id="mobile-navigation"
+      hidden
+      data-mobile-menu
+    >
+      <div class="navbar__mobile-menu-inner">
+        <a href="/" aria-current={currentPath === "/" ? "page" : undefined}>Home</a>
+        {links.map((link) => (
+          <a
+            href={link.href}
+            aria-current={isCurrentLink(link.href) ? "page" : undefined}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
     </div>
   </nav>
 </header>

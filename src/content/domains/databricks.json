@@ -1,0 +1,29 @@
+{
+  "domain": "databricks",
+  "articles": [
+    {
+      "title": "Practical clustering in Databricks SQL",
+      "excerpt": "How liquid clustering changes table maintenance, query pruning, and the way you reason about layout.",
+      "date": "2026-07-11",
+      "tags": ["Databricks", "Lakehouse"],
+      "readTime": "9 min read",
+      "author": { "name": "Armaandeep Singh", "url": "/about" },
+      "slug": "practical-clustering-databricks-sql",
+      "thumbnail": null,
+      "coverImage": null,
+      "contentFile": "articles/practical-clustering-databricks-sql.md"
+    },
+    {
+      "title": "Databricks workflow architecture at scale",
+      "excerpt": "Jobs, clusters, task graphs, retries, and observability for dependable multi-team data workflows.",
+      "date": "2026-07-10",
+      "tags": ["Databricks", "Workflows"],
+      "readTime": "16 min read",
+      "author": { "name": "Armaandeep Singh", "url": "/about" },
+      "slug": "databricks-workflow-architecture",
+      "thumbnail": null,
+      "coverImage": null,
+      "contentFile": "articles/databricks-workflow-architecture.md"
+    }
+  ]
+}

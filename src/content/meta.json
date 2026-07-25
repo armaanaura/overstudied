@@ -1,0 +1,85 @@
+{
+"domains": [
+{
+"name": "Databricks",
+"slug": "databricks",
+"tagline": "Where raw data becomes intelligence at scale.",
+"description": "The lakehouse where data engineering, analytics, and AI converge.",
+"topics": ["Delta Lake", "Spark", "Workflows", "Unity Catalog"],
+"thumbnail": null,
+"articlesFile": "domains/databricks.json"
+},
+{
+"name": "Snowflake",
+"slug": "snowflake",
+"tagline": "Where cloud data moves without limits.",
+"description": "A platform built for turning scattered data into fast, dependable insight.",
+"topics": ["Streams", "Tasks", "Warehousing", "Performance"],
+"thumbnail": null,
+"articlesFile": "domains/snowflake.json"
+},
+{
+"name": "Quantum Computing",
+"slug": "quantum-computing",
+"tagline": "Where physics meets computing and possibility breaks its limits.",
+"description": "A new model of computation shaped by uncertainty, superposition, and entanglement.",
+"topics": ["Qubits", "Quantum Algorithms", "Quantum Circuits", "Hardware"],
+"thumbnail": null,
+"articlesFile": "domains/quantum-computing.json"
+},
+{
+"name": "Artificial Intelligence",
+"slug": "artificial-intelligence",
+"tagline": "Where machines begin to reason, create, and act.",
+"description": "The evolving frontier between human intelligence and computational possibility.",
+"topics": ["Machine Learning", "Agents", "Generative AI", "Research"],
+"thumbnail": null,
+"articlesFile": "domains/artificial-intelligence.json"
+},
+{
+"name": "Hardware",
+"slug": "hardware",
+"tagline": "The physical foundation beneath every digital ambition.",
+"description": "Silicon, circuits, and machines transforming ideas into computation.",
+"topics": ["Processors", "Accelerators", "Architecture", "Devices"],
+"thumbnail": null,
+"articlesFile": "domains/hardware.json"
+},
+{
+"name": "Data Structures and Algorithms",
+"slug": "dsa",
+"tagline": "Where complex problems meet elegant solutions.",
+"description": "The patterns, structures, and strategies behind efficient computation.",
+"topics": ["Dynamic Programming", "Graphs", "Trees", "Complexity"],
+"thumbnail": null,
+"articlesFile": "domains/dsa.json"
+},
+{
+"name": "Psychology",
+"slug": "psychology",
+"tagline": "Inside the mind that shapes every human decision.",
+"description": "The hidden forces behind thought, memory, behaviour, and choice.",
+"topics": ["Cognition", "Learning", "Behaviour", "Decision-making"],
+"thumbnail": null,
+"articlesFile": "domains/psychology.json"
+},
+{
+"name": "System Design",
+"slug": "system-design",
+"tagline": "Where software grows beyond a single machine.",
+"description": "The architecture, trade-offs, and decisions behind systems built to endure.",
+"topics": ["Distributed Systems", "APIs", "Data Platforms", "Reliability"],
+"thumbnail": null,
+"articlesFile": "domains/system-design.json"
+},
+{
+"name": "Quantum Mechanics",
+"slug": "quantum-mechanics",
+"tagline": "Where reality stops behaving the way we expect.",
+"description": "The strange physical rules governing matter, measurement, and possibility.",
+"topics": ["Wave Functions", "Measurement", "Entanglement", "Quantum Theory"],
+"thumbnail": null,
+"articlesFile": "domains/quantum-mechanics.json"
+}
+]
+}

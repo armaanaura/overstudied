@@ -14,6 +14,8 @@ Overstudied is an article-first, Medium-like reading feed. It is not a marketing
 
 The homepage illustration lives in a permanently white, full-width container directly below the navbar. It is bottom-aligned. To reserve more white space above it, change `--homepage-image-top-space` on `.home-hero__media` in `src/styles/global.css`.
 
+The homepage is divided into three explicit content sections with headings and `View all` links: six latest publications, three study domains, and six more publications. Article sections use a two-column grid of compact horizontal cards with a square 185px thumbnail on the left and title plus minimal metadata on the right. Byline and excerpt are hidden in this homepage-only presentation. Below 900px the grid becomes one column, and at mobile sizes thumbnails reduce to 120px. The Domains section uses the same square media style as `/domains`.
+
 The Figma frames establish these tokens:
 
 | Token | Value | Use |
@@ -31,9 +33,9 @@ Typography uses Inter when available, followed by Helvetica Neue and Arial. Desk
 
 Article detail pages use a separate editorial stack that prefers `OpenAI Sans` and `OpenAI Sans Variable Scripts`, then falls back to Inter, Helvetica Neue, Arial, and sans-serif because the proprietary font files are not bundled with the project. Detail headlines use a responsive 48–64px display scale, section headings use 32px, and body copy uses 18px with a 1.55 line height. Mobile detail headlines use 40px, section headings use 28px, and body copy uses 17px.
 
-The desktop navbar is 72px tall with a 1px bottom border. The segmented theme toggle sits immediately to the right of the desktop search. The feed is centered at 800px. Desktop article rows include a 180×120 optional image area; missing images remain blank. Feed rows use a compact rhythm with 20px desktop separation and 18–20px mobile separation. At 1000px and below, navigation links and desktop search collapse while the theme toggle and search shortcut remain. At 640px and below, the toggle labels shorten to `L`, `D`, and `R`. At 720px and below, an in-page search field appears, thumbnails disappear, and the page uses 20px side gutters.
+The desktop navbar is 72px tall with a 1px bottom border. The segmented theme toggle sits immediately to the right of the desktop search. The feed is centered at 800px. Desktop article rows use a square 180×180px thumbnail area, reduced to 160×160px at intermediate widths. Feed rows use a compact rhythm with 20px desktop separation and 18–20px mobile separation. At 1000px and below, navigation links and desktop search collapse while the theme toggle and search shortcut remain. At 640px and below, the toggle labels shorten to `L`, `D`, and `R`. At 720px and below, an in-page search field appears, thumbnails disappear, and the page uses 20px side gutters.
 
-Domain cards are the only card-style UI. They use a 1px border, 4px radius, white background, and no shadow.
+The Domains index uses a three-column media grid. Every item contains a square thumbnail, the domain name, and one crisp tagline beneath it—no topics, counts, dates, borders, or card chrome. On mobile, the same square items scroll horizontally.
 
 Article detail pages use a 70:30 desktop split. The left column contains the optional cover image, article header, complete body, and article navigation. The right column contains a sticky table of contents generated from the article subheadings. Clicking an outline link navigates to its section, and scrolling updates the active link. Below 900px, the right panel collapses into an inline outline within the article column.
 

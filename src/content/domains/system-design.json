@@ -1,0 +1,53 @@
+{
+  "domain": "system-design",
+  "articles": [
+    {
+      "title": "FastAPI vs Django for interactive demos",
+      "excerpt": "How to choose a backend for project demos without building a full product before you need one.",
+      "date": "2026-07-15",
+      "tags": ["Backend", "Python"],
+      "readTime": "6 min read",
+      "author": { "name": "Armaandeep Singh", "url": "/about" },
+      "slug": "fastapi-vs-django-interactive-demos",
+      "thumbnail": null,
+      "coverImage": null,
+      "contentFile": "articles/fastapi-vs-django-interactive-demos.md"
+    },
+    {
+      "title": "YouTube system design: from upload to playback",
+      "excerpt": "Trace video ingestion, transcoding, storage, discovery, and global delivery as one connected system.",
+      "date": "2026-07-13",
+      "tags": ["Video", "Distributed Systems"],
+      "readTime": "18 min read",
+      "author": { "name": "Armaandeep Singh", "url": "/about" },
+      "slug": "youtube-system-design",
+      "thumbnail": null,
+      "coverImage": null,
+      "contentFile": "articles/youtube-system-design.md"
+    },
+    {
+      "title": "GitHub Actions as a backend system",
+      "excerpt": "Reusable workflows, artifacts, variables, and why pipeline design is closer to architecture than YAML.",
+      "date": "2026-07-12",
+      "tags": ["CI/CD", "GitHub Actions"],
+      "readTime": "14 min read",
+      "author": { "name": "Armaandeep Singh", "url": "/about" },
+      "slug": "github-actions-backend-system",
+      "thumbnail": null,
+      "coverImage": null,
+      "contentFile": "articles/github-actions-backend-system.md"
+    },
+    {
+      "title": "A large-scale notification system",
+      "excerpt": "Model fan-out, preferences, delivery channels, retries, and rate limits without losing messages or users' trust.",
+      "date": "2026-07-08",
+      "tags": ["Backend", "Messaging"],
+      "readTime": "17 min read",
+      "author": { "name": "Armaandeep Singh", "url": "/about" },
+      "slug": "large-scale-notification-system",
+      "thumbnail": null,
+      "coverImage": null,
+      "contentFile": "articles/large-scale-notification-system.md"
+    }
+  ]
+}

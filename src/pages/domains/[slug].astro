@@ -1,5 +1,5 @@
 ---
-import ArticleList from "../../components/ArticleList.astro";
+import ArticleRow from "../../components/ArticleRow.astro";
 import SearchBox from "../../components/SearchBox.astro";
 import TagChip from "../../components/TagChip.astro";
 import { articles } from "../../data/articles";
@@ -19,8 +19,8 @@ interface Props {
   domain: StudyDomain;
 }
 
-const { domain } = Astro.props;
-const domainArticles = articles.filter((article) => article.domain === domain.slug);
+const { domain } = Astro.props as Props;
+const domainArticles = articles.filter((article) => article.category === domain.slug);
 ---
 
 <BaseLayout title={domain.name} description={domain.description}>
@@ -34,8 +34,12 @@ const domainArticles = articles.filter((article) => article.domain === domain.sl
       </div>
       <p class="domain-intro__meta">
         {domain.articleCount} {domain.articleCount === 1 ? "article" : "articles"}
-        <span aria-hidden="true">·</span>
-        Updated {formatShortDate(domain.lastUpdated)}
+        {domain.lastUpdated && (
+          <>
+            <span aria-hidden="true">·</span>
+            Updated {formatShortDate(domain.lastUpdated)}
+          </>
+        )}
       </p>
       <div class="page-search">
         <SearchBox id="content-search" placeholder={`Search ${domain.name}`} />
@@ -43,7 +47,9 @@ const domainArticles = articles.filter((article) => article.domain === domain.sl
     </header>
     <div class="section-divider" aria-hidden="true"></div>
     {domainArticles.length > 0 ? (
-      <ArticleList articles={domainArticles} label={`${domain.name} articles`} />
+      <section class="article-list" aria-label={`${domain.name} articles`}>
+        {domainArticles.map((article) => <ArticleRow article={article} />)}
+      </section>
     ) : (
       <p class="domain-empty">Articles for this domain are being prepared.</p>
     )}

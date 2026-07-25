@@ -1,0 +1,41 @@
+{
+  "domain": "quantum-computing",
+  "articles": [
+    {
+      "title": "Quantum entanglement, explained carefully",
+      "excerpt": "Build an intuitive model of entangled states, correlations, and measurement without relying on faster-than-light myths.",
+      "date": "2026-07-22",
+      "tags": ["Quantum Computing", "Entanglement", "Qubits"],
+      "readTime": "9 min read",
+      "author": { "name": "Armaandeep Singh", "url": "/about" },
+      "slug": "quantum-entanglement-explained-carefully",
+      "thumbnail": null,
+      "coverImage": null,
+      "contentFile": "articles/quantum-entanglement-explained-carefully.md"
+    },
+    {
+      "title": "Grover's search algorithm from first principles",
+      "excerpt": "Follow amplitude amplification step by step and understand where Grover's quadratic search advantage comes from.",
+      "date": "2026-07-15",
+      "tags": ["Quantum Algorithms", "Grover's Algorithm", "Search"],
+      "readTime": "10 min read",
+      "author": { "name": "Armaandeep Singh", "url": "/about" },
+      "slug": "grovers-search-from-first-principles",
+      "thumbnail": null,
+      "coverImage": null,
+      "contentFile": "articles/grovers-search-from-first-principles.md"
+    },
+    {
+      "title": "Quantum circuits without the mystery",
+      "excerpt": "A first-principles guide to qubits, gates, measurement, and reading a quantum circuit without treating it like magic.",
+      "date": "2026-07-02",
+      "tags": ["Quantum Computing", "Qubits"],
+      "readTime": "9 min read",
+      "author": { "name": "Armaandeep Singh", "url": "/about" },
+      "slug": "quantum-circuits-without-the-mystery",
+      "thumbnail": null,
+      "coverImage": null,
+      "contentFile": "articles/quantum-circuits-without-the-mystery.md"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "domain": "dsa",
+  "articles": [
+    {
+      "title": "Knapsack merging without fear",
+      "excerpt": "A clean mental model for tree DP, budget states, and merging child subproblems without memorizing templates.",
+      "date": "2026-07-16",
+      "tags": ["DSA", "Dynamic Programming"],
+      "readTime": "8 min read",
+      "author": { "name": "Armaandeep Singh", "url": "/about" },
+      "slug": "knapsack-merging-without-fear",
+      "thumbnail": null,
+      "coverImage": null,
+      "contentFile": "articles/knapsack-merging-without-fear.md"
+    },
+    {
+      "title": "Binary lifting finally visualized",
+      "excerpt": "Jump tables, kth ancestors, and LCA explained with the intuition first and the template second.",
+      "date": "2026-07-14",
+      "tags": ["Graphs", "DSA"],
+      "readTime": "10 min read",
+      "author": { "name": "Armaandeep Singh", "url": "/about" },
+      "slug": "binary-lifting-finally-visualized",
+      "thumbnail": {
+        "src": "/images/articles/binary-lifting-finally-visualized.png",
+        "alt": "Visualization of a binary lifting jump table"
+      },
+      "coverImage": {
+        "src": "/images/articles/binary-lifting-finally-visualized.png",
+        "alt": "Visualization of a binary lifting jump table"
+      },
+      "contentFile": "articles/binary-lifting-finally-visualized.md"
+    }
+  ]
+}
