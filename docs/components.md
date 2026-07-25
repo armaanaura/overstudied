@@ -9,12 +9,10 @@
 | `TopicTabs` | Reusable tab/link row; the homepage uses its interactive filter mode |
 | `ArticleList` | Ordered rendering of article rows |
 | `ArticleRow` | Compact article metadata, study-domain category, title, excerpt, first tag, read time, and desktop thumbnail |
-| `ArticleBody` | Safe rendering of typed, anchor-addressable article sections, paragraphs, lists, and code blocks |
 | `ArticleNavigation` | Newer/older links at the end of every article detail page |
 | `TagChip` | Neutral pill used only for taxonomy metadata |
-| `ArchitectureRow` | System-design content rendered with the same compact thumbnail-left presentation as `ArticleRow` |
 | `DomainCard` | Square domain thumbnail, domain name, and one-line tagline linking to `/domains/[slug]` |
 
-Components are Astro components with typed props. Keep content in `src/data`, layout rules in `src/styles/global.css`, and page composition in `src/pages`. Avoid client frameworks: the current search/filter behavior needs only a small browser script in `BaseLayout`.
+Components are Astro components with typed props. Keep author-managed content in `src/content`, content-loading logic in `src/data/content.ts`, layout rules in `src/styles/global.css`, and page composition in `src/pages`. Astro renders article Markdown directly on `/articles/[slug]`; its `##` headings provide the table of contents. Avoid client frameworks: the current search/filter behavior needs only a small browser script in `BaseLayout`.
 
 The theme toggle cycles `light` → `dark` → `reading` → `light`. It stores the selected value in `localStorage` under `theme` and applies it through `document.documentElement.dataset.theme`. The early inline script in `BaseLayout` restores the saved value before the page renders to prevent a theme flash.

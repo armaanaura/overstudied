@@ -1,0 +1,17 @@
+{
+  "domain": "snowflake",
+  "articles": [
+    {
+      "title": "Snowflake streams and tasks as a data pipeline",
+      "excerpt": "A small, dependable pattern for incremental processing with clear scheduling and recovery boundaries.",
+      "date": "2026-07-09",
+      "tags": ["Snowflake", "Data Engineering"],
+      "readTime": "7 min read",
+      "author": { "name": "Armaandeep Singh", "url": "/about" },
+      "slug": "snowflake-streams-tasks-pipeline",
+      "thumbnail": null,
+      "coverImage": null,
+      "contentFile": "articles/snowflake-streams-tasks-pipeline.md"
+    }
+  ]
+}

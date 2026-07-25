@@ -1,9 +1,7 @@
 ---
-import ArchitectureRow from "../../components/ArchitectureRow.astro";
 import ArticleRow from "../../components/ArticleRow.astro";
 import SearchBox from "../../components/SearchBox.astro";
 import TagChip from "../../components/TagChip.astro";
-import { architectures } from "../../data/architectures";
 import { articles } from "../../data/articles";
 import { domains } from "../../data/domains";
 import type { StudyDomain } from "../../data/types";
@@ -23,12 +21,6 @@ interface Props {
 
 const { domain } = Astro.props as Props;
 const domainArticles = articles.filter((article) => article.category === domain.slug);
-const domainContent = [
-  ...domainArticles.map((item) => ({ date: item.date, kind: "article" as const, item })),
-  ...(domain.slug === "system-design"
-    ? architectures.map((item) => ({ date: item.date, kind: "system-design" as const, item }))
-    : []),
-].sort((a, b) => b.date.localeCompare(a.date));
 ---
 
 <BaseLayout title={domain.name} description={domain.description}>
@@ -42,21 +34,21 @@ const domainContent = [
       </div>
       <p class="domain-intro__meta">
         {domain.articleCount} {domain.articleCount === 1 ? "article" : "articles"}
-        <span aria-hidden="true">·</span>
-        Updated {formatShortDate(domain.lastUpdated)}
+        {domain.lastUpdated && (
+          <>
+            <span aria-hidden="true">·</span>
+            Updated {formatShortDate(domain.lastUpdated)}
+          </>
+        )}
       </p>
       <div class="page-search">
         <SearchBox id="content-search" placeholder={`Search ${domain.name}`} />
       </div>
     </header>
     <div class="section-divider" aria-hidden="true"></div>
-    {domainContent.length > 0 ? (
+    {domainArticles.length > 0 ? (
       <section class="article-list" aria-label={`${domain.name} articles`}>
-        {domainContent.map((entry) => (
-          entry.kind === "article"
-            ? <ArticleRow article={entry.item} />
-            : <ArchitectureRow architecture={entry.item} />
-        ))}
+        {domainArticles.map((article) => <ArticleRow article={article} />)}
       </section>
     ) : (
       <p class="domain-empty">Articles for this domain are being prepared.</p>

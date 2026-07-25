@@ -1,17 +1,10 @@
 ---
-import ArchitectureRow from "../components/ArchitectureRow.astro";
 import ArticleRow from "../components/ArticleRow.astro";
 import SearchBox from "../components/SearchBox.astro";
-import { architectures } from "../data/architectures";
 import { articles } from "../data/articles";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const systemDesignContent = [
-  ...articles
-    .filter((article) => article.category === "system-design")
-    .map((item) => ({ date: item.date, kind: "article" as const, item })),
-  ...architectures.map((item) => ({ date: item.date, kind: "explainer" as const, item })),
-].sort((a, b) => b.date.localeCompare(a.date));
+const systemDesignContent = articles.filter((article) => article.category === "system-design");
 ---
 
 <BaseLayout title="System Design" description="End-to-end system design explainers from Overstudied.">
@@ -26,11 +19,7 @@ const systemDesignContent = [
     </header>
     <div class="section-divider" aria-hidden="true"></div>
     <section class="article-list" aria-label="System design explainers">
-      {systemDesignContent.map((entry) => (
-        entry.kind === "article"
-          ? <ArticleRow article={entry.item} />
-          : <ArchitectureRow architecture={entry.item} />
-      ))}
+      {systemDesignContent.map((article) => <ArticleRow article={article} />)}
     </section>
     <p class="empty-state" data-search-empty hidden>No system designs match this search.</p>
   </main>

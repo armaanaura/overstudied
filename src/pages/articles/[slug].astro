@@ -1,10 +1,10 @@
 ---
-import ArticleBody from "../../components/ArticleBody.astro";
 import ArticleNavigation from "../../components/ArticleNavigation.astro";
 import TagChip from "../../components/TagChip.astro";
 import { articles } from "../../data/articles";
 import { domains } from "../../data/domains";
 import type { Article } from "../../data/types";
+import { getArticleMarkdown } from "../../lib/article-content";
 import { formatLongDate } from "../../lib/format";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
@@ -25,30 +25,21 @@ interface Props {
   older: Article | null;
 }
 
-const { article, newer, older } = Astro.props;
+const { article, newer, older } = Astro.props as Props;
 const domain = domains.find((item) => item.slug === article.category);
-const sections = article.content.map((section, index) => {
-  const headingSlug = section.heading
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-
-  return {
-    ...section,
-    id: `section-${index + 1}-${headingSlug || "topic"}`,
-  };
-});
+const articleMarkdown = getArticleMarkdown(article.contentFile);
+const Content = articleMarkdown.Content;
+const sections = articleMarkdown.getHeadings().filter((heading) => heading.depth === 2);
 ---
 
 <BaseLayout title={article.title} description={article.excerpt}>
   <main id="main-content" class="article-detail-layout">
     <div class="article-detail__main">
-      {article.image && (
+      {article.coverImage && (
         <figure class="article-detail__cover">
           <img
-            src={article.image.src}
-            alt={article.image.alt}
+            src={article.coverImage.src}
+            alt={article.coverImage.alt}
             loading="eager"
             decoding="async"
             fetchpriority="high"
@@ -73,7 +64,11 @@ const sections = article.content.map((section, index) => {
             <h1>{article.title}</h1>
             <p class="article-detail__excerpt">{article.excerpt}</p>
             <div class="article-detail__meta">
-              <a href="/about">Armaandeep Singh</a>
+              {article.author.url ? (
+                <a href={article.author.url}>{article.author.name}</a>
+              ) : (
+                <span>{article.author.name}</span>
+              )}
               <span aria-hidden="true">·</span>
               <time datetime={article.date}>{formatLongDate(article.date)}</time>
               <span aria-hidden="true">·</span>
@@ -87,16 +82,9 @@ const sections = article.content.map((section, index) => {
             </div>
           </header>
 
-          <nav class="article-toc article-toc--mobile" aria-label="Article sections">
-            <p>On this page</p>
-            <ol>
-              {sections.map((section) => (
-                <li><a href={`#${section.id}`} data-article-toc-link>{section.heading}</a></li>
-              ))}
-            </ol>
-          </nav>
-
-          <ArticleBody sections={sections} />
+          <div class="article-body">
+            <Content />
+          </div>
         </article>
 
         <ArticleNavigation newer={newer} older={older} />
@@ -108,7 +96,7 @@ const sections = article.content.map((section, index) => {
         <p>On this page</p>
         <ol>
           {sections.map((section) => (
-            <li><a href={`#${section.id}`} data-article-toc-link>{section.heading}</a></li>
+            <li><a href={`#${section.slug}`} data-article-toc-link>{section.text}</a></li>
           ))}
         </ol>
       </nav>

@@ -18,8 +18,8 @@ The homepage has separate Articles and Study Domains sections. Their `View all` 
 
 The homepage shows six latest publications, the first three study domains, and the next six publications. Publications are drawn from normal articles and System Design explainers without duplication. These limits do not apply to `/articles` or `/domains`.
 
-`/articles` is the canonical all-content index. A system-design explainer may remain stored in `src/data/architectures.ts` because it has additional structured fields, but it must still appear in the Articles archive and in the System Design category views.
+`/articles` is the canonical all-content index. All publication metadata lives in the per-domain JSON files under `src/content/domains`, including System Design publications. Article bodies live in `src/content/articles` as Markdown.
 
-Article titles link directly to `/articles/[slug]`. Each detail page includes breadcrumbs, links to its author and study domain, and newer/older article navigation. System design titles link to anchors on `/system-design`; detail pages for these explainers remain out of scope.
+Article titles link directly to `/articles/[slug]`. Each detail page includes breadcrumbs, links to its author and study domain, heading navigation, and newer/older article navigation. System Design publications use the same article detail layout.
 
 `/algorithms` is a curated view of canonical articles whose `category` is `dsa`; it does not duplicate article data. Navbar links for Psychology and Quantum Computing point to `/domains/psychology` and `/domains/quantum-computing`.

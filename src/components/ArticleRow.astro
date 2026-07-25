@@ -10,9 +10,15 @@ interface Props {
 }
 
 const { article } = Astro.props;
-const thumbnail = getArticleThumbnail(article.image, article.slug);
+const thumbnail = getArticleThumbnail(article.thumbnail, article.slug);
 const categoryName = domains.find((domain) => domain.slug === article.category)?.name;
-const searchText = [article.title, article.excerpt, article.tags.join(" "), article.category]
+const searchText = [
+  article.title,
+  article.excerpt,
+  article.author.name,
+  article.tags.join(" "),
+  article.category,
+]
   .filter(Boolean)
   .join(" ")
   .toLowerCase();
@@ -30,7 +36,7 @@ const searchText = [article.title, article.excerpt, article.tags.join(" "), arti
   </div>
   <div class="article-row__copy">
     <p class="byline">
-      Armaandeep Singh
+      {article.author.name}
       {categoryName && (
         <span class="byline__category"><span aria-hidden="true">·</span> {categoryName}</span>
       )}

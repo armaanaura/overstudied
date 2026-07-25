@@ -1,22 +1,14 @@
 ---
-import ArchitectureRow from "../components/ArchitectureRow.astro";
 import ArticleRow from "../components/ArticleRow.astro";
 import DomainCard from "../components/DomainCard.astro";
 import SearchBox from "../components/SearchBox.astro";
-import { architectures } from "../data/architectures";
 import { articles } from "../data/articles";
 import { domains } from "../data/domains";
 import homepageImage from "../Assets/homepage.png";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const homepagePublications = [
-  ...articles.map((item) => ({ date: item.date, kind: "article" as const, item })),
-  ...architectures.map((item) => ({ date: item.date, kind: "architecture" as const, item })),
-]
-  .sort((a, b) => b.date.localeCompare(a.date));
-
-const homepageArticles = homepagePublications.slice(0, 6);
-const moreHomepageArticles = homepagePublications.slice(6, 12);
+const homepageArticles = articles.slice(0, 6);
+const moreHomepageArticles = articles.slice(6, 12);
 const homepageDomains = domains.slice(0, 3);
 ---
 
@@ -58,10 +50,7 @@ const homepageDomains = domains.slice(0, 3);
           <a href="/articles">View all</a>
         </header>
         <div class="home-article-grid">
-          {homepageArticles.map((entry) => {
-            if (entry.kind === "article") return <ArticleRow article={entry.item} />;
-            return <ArchitectureRow architecture={entry.item} />;
-          })}
+          {homepageArticles.map((article) => <ArticleRow article={article} />)}
         </div>
       </section>
 
@@ -81,10 +70,7 @@ const homepageDomains = domains.slice(0, 3);
           <a href="/articles">View all</a>
         </header>
         <div class="home-article-grid">
-          {moreHomepageArticles.map((entry) => {
-            if (entry.kind === "article") return <ArticleRow article={entry.item} />;
-            return <ArchitectureRow architecture={entry.item} />;
-          })}
+          {moreHomepageArticles.map((article) => <ArticleRow article={article} />)}
         </div>
       </section>
     </div>
