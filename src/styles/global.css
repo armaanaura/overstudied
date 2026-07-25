@@ -854,6 +854,13 @@ select {
   line-height: 25px;
 }
 
+.about-author__links,
+.footer__author-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+}
+
 .article-detail-layout {
   display: grid;
   grid-template-columns: minmax(0, 7fr) minmax(260px, 3fr);
