@@ -5,7 +5,7 @@ import TagChip from "../components/TagChip.astro";
 import { articles } from "../data/articles";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const algorithmArticles = articles.filter((article) => article.domain === "dsa");
+const algorithmArticles = articles.filter((article) => article.category === "dsa");
 const topics = ["Dynamic Programming", "Graphs", "Trees", "Complexity"];
 ---
 

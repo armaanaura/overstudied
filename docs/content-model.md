@@ -12,7 +12,7 @@ interface Article {
   tags: string[];
   readTime: string;
   slug: string;
-  domain?: string; // StudyDomain.slug
+  category: "system-design" | "quantum-computing" | "psychology" | "dsa";
   image?: { src: string; alt: string };
   content: ArticleSection[];
   type: "article";
@@ -39,6 +39,7 @@ interface Architecture {
   tags: string[];
   readTime: string;
   slug: string;
+  category: "system-design";
   image?: { src: string; alt: string };
   systemsCovered: string[];
   complexity: "Intermediate" | "Advanced";
@@ -51,7 +52,7 @@ interface Architecture {
 ```ts
 interface StudyDomain {
   name: string;
-  slug: string;
+  slug: Article["category"];
   description: string;
   topics: string[];
   articleCount: number;
@@ -59,9 +60,11 @@ interface StudyDomain {
 }
 ```
 
-An article belongs to a domain through `domain: "databricks"` or another domain slug. Never copy or fork an article into a domain-specific file. `/domains/[slug]` filters the canonical `articles` array by metadata. Keep `articleCount` synchronized while data remains mocked; derive it automatically when the project moves to Astro content collections.
+Every article belongs to exactly one of four parent study domains through its required `category` metadata: `system-design`, `quantum-computing`, `psychology`, or `dsa`. Never copy or fork an article into a domain-specific file. `/domains/[slug]` filters the canonical `articles` array by this metadata. Keep `articleCount` synchronized while data remains mocked; derive it automatically when the project moves to Astro content collections.
 
 Article bodies are canonical too: keep the typed `content` sections on the matching record in `src/data/articles.ts`. `/articles/[slug]`, `/algorithms`, and domain pages all resolve the same record. Do not create a second body for a domain or algorithm view.
+
+The `/articles` page is the complete publication archive. It renders both the standard `articles` records and the structured System Design explainers from `architectures`, sorted together by date. System Design category pages follow the same rule.
 
 The homepage constructs a dated union of all three buckets at build time and sorts it descending. A domain uses `lastUpdated` as its feed date.
 
@@ -89,4 +92,4 @@ image: {
 
 Architecture records use the equivalent `/images/architectures/<slug>.webp` path. Prefer a 3:2 image because feed thumbnails render at 180×120px. Use WebP where practical, keep filenames lowercase and kebab-cased, and write alt text that describes the image rather than repeating the article title.
 
-Images are optional. When `image` is absent, rows render a blank surface—never a generated label, colored placeholder, or invented image. When an image is supplied, meaningful `alt` text is required.
+Images are optional. When an article has no `image`, `ArticleRow` assigns it a deterministic fallback from `src/Assets/abstract`; the article slug selects the image so it stays consistent across pages and builds. This fallback is only a feed thumbnail and does not become the article-detail cover image. When an image is supplied, meaningful `alt` text is required.

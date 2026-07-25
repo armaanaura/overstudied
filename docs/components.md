@@ -8,11 +8,11 @@
 | `SearchBox` | Accessible search form used in the navbar and mobile page intros |
 | `TopicTabs` | Reusable tab/link row; the homepage uses its interactive filter mode |
 | `ArticleList` | Ordered rendering of article rows |
-| `ArticleRow` | Compact article metadata, title, excerpt, first tag, read time, and optional desktop image |
+| `ArticleRow` | Compact article metadata, study-domain category, title, excerpt, first tag, read time, and desktop thumbnail |
 | `ArticleBody` | Safe rendering of typed, anchor-addressable article sections, paragraphs, lists, and code blocks |
 | `ArticleNavigation` | Newer/older links at the end of every article detail page |
 | `TagChip` | Neutral pill used only for taxonomy metadata |
-| `ArchitectureRow` | Compact architecture row with optional image, complexity, and systems covered |
+| `ArchitectureRow` | System-design content rendered with the same compact thumbnail-left presentation as `ArticleRow` |
 | `DomainCard` | Bordered domain summary that links to `/domains/[slug]` |
 
 Components are Astro components with typed props. Keep content in `src/data`, layout rules in `src/styles/global.css`, and page composition in `src/pages`. Avoid client frameworks: the current search/filter behavior needs only a small browser script in `BaseLayout`.

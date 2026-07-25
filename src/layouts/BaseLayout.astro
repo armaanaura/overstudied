@@ -49,8 +49,12 @@ const pageTitle = title === "Overstudied" ? title : `${title} · Overstudied`;
         items.forEach((item) => {
           const searchable = item.dataset.searchable ?? "";
           const itemType = item.dataset.feedType;
+          const itemCategory = item.dataset.category;
           const matchesQuery = searchable.includes(state.query);
-          const matchesFilter = state.filter === "latest" || itemType === state.filter;
+          const matchesFilter =
+            state.filter === "latest"
+            || itemType === state.filter
+            || itemCategory === state.filter;
           const isVisible = matchesQuery && matchesFilter;
           item.hidden = !isVisible;
           if (isVisible) visibleCount += 1;

@@ -15,6 +15,12 @@ export interface ArticleSection {
   code?: ArticleCodeBlock;
 }
 
+export type ArticleCategory =
+  | "system-design"
+  | "quantum-computing"
+  | "psychology"
+  | "dsa";
+
 export interface Article {
   title: string;
   excerpt: string;
@@ -22,7 +28,7 @@ export interface Article {
   tags: string[];
   readTime: string;
   slug: string;
-  domain?: string;
+  category: ArticleCategory;
   image?: ContentImage;
   content: ArticleSection[];
   type: "article";
@@ -37,6 +43,7 @@ export interface Architecture {
   tags: string[];
   readTime: string;
   slug: string;
+  category: "system-design";
   image?: ContentImage;
   systemsCovered: string[];
   complexity: ArchitectureComplexity;
@@ -45,7 +52,7 @@ export interface Architecture {
 
 export interface StudyDomain {
   name: string;
-  slug: string;
+  slug: ArticleCategory;
   description: string;
   topics: string[];
   articleCount: number;

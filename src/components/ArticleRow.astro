@@ -1,5 +1,7 @@
 ---
 import type { Article } from "../data/types";
+import { domains } from "../data/domains";
+import { getArticleThumbnail } from "../lib/article-images";
 import { formatShortDate } from "../lib/format";
 import TagChip from "./TagChip.astro";
 
@@ -8,7 +10,9 @@ interface Props {
 }
 
 const { article } = Astro.props;
-const searchText = [article.title, article.excerpt, article.tags.join(" "), article.domain]
+const thumbnail = getArticleThumbnail(article.image, article.slug);
+const categoryName = domains.find((domain) => domain.slug === article.category)?.name;
+const searchText = [article.title, article.excerpt, article.tags.join(" "), article.category]
   .filter(Boolean)
   .join(" ")
   .toLowerCase();
@@ -19,9 +23,18 @@ const searchText = [article.title, article.excerpt, article.tags.join(" "), arti
   id={article.slug}
   data-searchable={searchText}
   data-feed-type="article"
+  data-category={article.category}
 >
+  <div class="article-row__thumbnail" aria-hidden={thumbnail ? undefined : "true"}>
+    {thumbnail && <img src={thumbnail.src} alt={thumbnail.alt} loading="lazy" />}
+  </div>
   <div class="article-row__copy">
-    <p class="byline">Armaandeep Singh <span aria-hidden="true"></span></p>
+    <p class="byline">
+      Armaandeep Singh
+      {categoryName && (
+        <span class="byline__category"><span aria-hidden="true">·</span> {categoryName}</span>
+      )}
+    </p>
     <h2><a href={`/articles/${article.slug}`}>{article.title}</a></h2>
     <p class="article-row__excerpt">{article.excerpt}</p>
     <div class="article-row__meta">
@@ -30,8 +43,5 @@ const searchText = [article.title, article.excerpt, article.tags.join(" "), arti
       <span>.</span>
       <span>{article.readTime}</span>
     </div>
-  </div>
-  <div class="article-row__thumbnail" aria-hidden={article.image ? undefined : "true"}>
-    {article.image && <img src={article.image.src} alt={article.image.alt} loading="lazy" />}
   </div>
 </article>

@@ -26,7 +26,7 @@ interface Props {
 }
 
 const { article, newer, older } = Astro.props;
-const domain = domains.find((item) => item.slug === article.domain);
+const domain = domains.find((item) => item.slug === article.category);
 const sections = article.content.map((section, index) => {
   const headingSlug = section.heading
     .toLowerCase()

@@ -9,7 +9,7 @@ export const articles: Article[] = [
     tags: ["DSA", "Dynamic Programming"],
     readTime: "8 min read",
     slug: "knapsack-merging-without-fear",
-    domain: "dsa",
+    category: "dsa",
     content: [
       {
         heading: "Start with the meaning of one state",
@@ -59,7 +59,7 @@ export const articles: Article[] = [
     tags: ["Backend", "Python"],
     readTime: "6 min read",
     slug: "fastapi-vs-django-interactive-demos",
-    domain: "backend-systems",
+    category: "system-design",
     content: [
       {
         heading: "Choose around the demo boundary",
@@ -97,7 +97,7 @@ export const articles: Article[] = [
     tags: ["Graphs", "DSA"],
     readTime: "10 min read",
     slug: "binary-lifting-finally-visualized",
-    domain: "dsa",
+    category: "dsa",
     image: {
       src: "/images/articles/binary-lifting-finally-visualized.png",
       alt: "Visualization of a binary lifting jump table",
@@ -142,7 +142,7 @@ for j in 1..LOG-1:
     tags: ["Databricks", "Lakehouse"],
     readTime: "9 min read",
     slug: "practical-clustering-databricks-sql",
-    domain: "databricks",
+    category: "system-design",
     content: [
       {
         heading: "Clustering is about data skipping",
@@ -180,7 +180,7 @@ for j in 1..LOG-1:
     tags: ["Snowflake", "Data Engineering"],
     readTime: "7 min read",
     slug: "snowflake-streams-tasks-pipeline",
-    domain: "snowflake",
+    category: "system-design",
     content: [
       {
         heading: "Streams describe what changed",
@@ -218,7 +218,7 @@ for j in 1..LOG-1:
     tags: ["MLOps", "Features"],
     readTime: "11 min read",
     slug: "feature-stores-without-mystery",
-    domain: "mlops",
+    category: "system-design",
     content: [
       {
         heading: "A feature store connects two serving paths",
@@ -256,7 +256,7 @@ for j in 1..LOG-1:
     tags: ["AI Engineering", "Agents"],
     readTime: "12 min read",
     slug: "reliable-tool-calling-agents",
-    domain: "ai-engineering",
+    category: "system-design",
     content: [
       {
         heading: "Treat the agent as a controlled loop",
