@@ -1,5 +1,32 @@
 {
 "domains": [
+  {
+  "name": "Artificial Intelligence",
+  "slug": "artificial-intelligence",
+  "tagline": "Where machines begin to reason, create, and act.",
+  "description": "The evolving frontier between human intelligence and computational possibility.",
+  "topics": ["Machine Learning", "Agents", "Generative AI", "Research"],
+  "thumbnail": null,
+  "articlesFile": "domains/artificial-intelligence.json"
+  },
+  {
+  "name": "Psychology",
+  "slug": "psychology",
+  "tagline": "Inside the mind that shapes every human decision.",
+  "description": "The hidden forces behind thought, memory, behaviour, and choice.",
+  "topics": ["Cognition", "Learning", "Behaviour", "Decision-making"],
+  "thumbnail": null,
+  "articlesFile": "domains/psychology.json"
+  },
+  {
+  "name": "Quantum Computing",
+  "slug": "quantum-computing",
+  "tagline": "Where physics meets computing and possibility breaks its limits.",
+  "description": "A new model of computation shaped by uncertainty, superposition, and entanglement.",
+  "topics": ["Qubits", "Quantum Algorithms", "Quantum Circuits", "Hardware"],
+  "thumbnail": null,
+  "articlesFile": "domains/quantum-computing.json"
+  },
 {
 "name": "Databricks",
 "slug": "databricks",
@@ -9,7 +36,7 @@
 "thumbnail": null,
 "articlesFile": "domains/databricks.json"
 },
-{
+  {
 "name": "Snowflake",
 "slug": "snowflake",
 "tagline": "Where cloud data moves without limits.",
@@ -17,24 +44,6 @@
 "topics": ["Streams", "Tasks", "Warehousing", "Performance"],
 "thumbnail": null,
 "articlesFile": "domains/snowflake.json"
-},
-{
-"name": "Quantum Computing",
-"slug": "quantum-computing",
-"tagline": "Where physics meets computing and possibility breaks its limits.",
-"description": "A new model of computation shaped by uncertainty, superposition, and entanglement.",
-"topics": ["Qubits", "Quantum Algorithms", "Quantum Circuits", "Hardware"],
-"thumbnail": null,
-"articlesFile": "domains/quantum-computing.json"
-},
-{
-"name": "Artificial Intelligence",
-"slug": "artificial-intelligence",
-"tagline": "Where machines begin to reason, create, and act.",
-"description": "The evolving frontier between human intelligence and computational possibility.",
-"topics": ["Machine Learning", "Agents", "Generative AI", "Research"],
-"thumbnail": null,
-"articlesFile": "domains/artificial-intelligence.json"
 },
 {
 "name": "Hardware",
@@ -53,15 +62,6 @@
 "topics": ["Dynamic Programming", "Graphs", "Trees", "Complexity"],
 "thumbnail": null,
 "articlesFile": "domains/dsa.json"
-},
-{
-"name": "Psychology",
-"slug": "psychology",
-"tagline": "Inside the mind that shapes every human decision.",
-"description": "The hidden forces behind thought, memory, behaviour, and choice.",
-"topics": ["Cognition", "Learning", "Behaviour", "Decision-making"],
-"thumbnail": null,
-"articlesFile": "domains/psychology.json"
 },
 {
 "name": "System Design",

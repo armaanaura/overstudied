@@ -11,7 +11,7 @@
 9. Keep data dates as ISO `YYYY-MM-DD` strings so lexical sorting remains correct.
 10. Run `npm run check` and `npm run build` after changes. For visual work, check at 1440px desktop and 390px mobile widths.
 11. Keep article images optional. An article without an explicit thumbnail receives a deterministic feed image from `src/Assets/abstract`; it must not become an article-detail cover. A missing `coverImage` leaves the article cover empty.
-12. Preserve the shared footer on every page, including the Overstudied company name, important links, Armaandeep Singh's LinkedIn contact, and the short author biography.
+12. Preserve the shared footer on every page, including the Overstudied company name, important links, Armaandeep Singh's LinkedIn contact, and both author summaries. Vanshika Chawala is responsible for Psychology content.
 13. Manage domains in `src/content/meta.json`, article metadata in the matching `src/content/domains/*.json` file, and article bodies in `src/content/articles/*.md`. Do not move authored content back into TypeScript.
 14. Treat `/articles` as the complete publication archive. It must include every article from every domain, including System Design, sorted together by date.
 15. Keep domain list items limited to a square thumbnail, domain name, and one crisp tagline. Do not add topics, dates, counts, or other metadata to `DomainCard`.

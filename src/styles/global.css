@@ -170,6 +170,7 @@ select {
 
 .navbar__mobile-search {
   display: none;
+  touch-action: manipulation;
 }
 
 .navbar__menu-toggle,
@@ -302,8 +303,9 @@ select {
   outline: none;
   background: var(--search);
   color: var(--text);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 18px;
+  touch-action: manipulation;
 }
 
 .search-box input::placeholder {
@@ -1220,6 +1222,11 @@ select {
 
 .footer__grid p {
   margin: 10px 0 0;
+}
+
+.footer__author strong {
+  color: var(--text);
+  font-weight: 600;
 }
 
 .footer__links ul {
