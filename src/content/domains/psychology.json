@@ -2,40 +2,16 @@
   "domain": "psychology",
   "articles": [
     {
-      "title": "Why spaced repetition works",
-      "excerpt": "A practical look at forgetting, retrieval strength, and why well-timed review makes knowledge easier to retain.",
-      "date": "2026-07-24",
-      "tags": ["Learning", "Memory", "Spaced Repetition"],
+      "title": "Who Let the Dogs Out? The Effectiveness of Therapy Dogs",
+      "excerpt": "Cute button-like eyes, wagging tails, and a furball of energy—this image usually stirs multiple positive emotions in most of our minds.",
+      "date": "2026-07-26",
+      "tags": ["Psychology", "Animal-Assisted Therapy", "Therapy Dogs"],
       "readTime": "7 min read",
-      "author": { "name": "Armaandeep Singh", "url": "/about" },
-      "slug": "why-spaced-repetition-works",
+      "author": { "name": "Vanshika Chawla", "url": "/about#vanshika-chawla" },
+      "slug": "who-let-the-dogs-out-effectiveness-of-therapy-dogs",
       "thumbnail": null,
       "coverImage": null,
-      "contentFile": "articles/why-spaced-repetition-works.md"
-    },
-    {
-      "title": "Cognitive load and the way we learn",
-      "excerpt": "How working-memory limits shape explanations, study sessions, and the design of material that is easier to understand.",
-      "date": "2026-07-18",
-      "tags": ["Cognitive Psychology", "Learning", "Focus"],
-      "readTime": "8 min read",
-      "author": { "name": "Armaandeep Singh", "url": "/about" },
-      "slug": "cognitive-load-and-the-way-we-learn",
-      "thumbnail": null,
-      "coverImage": null,
-      "contentFile": "articles/cognitive-load-and-the-way-we-learn.md"
-    },
-    {
-      "title": "The hidden influence of confirmation bias",
-      "excerpt": "Why we notice evidence that supports our beliefs and practical habits for thinking with greater intellectual honesty.",
-      "date": "2026-07-11",
-      "tags": ["Biases", "Decision Making", "Critical Thinking"],
-      "readTime": "6 min read",
-      "author": { "name": "Armaandeep Singh", "url": "/about" },
-      "slug": "hidden-influence-of-confirmation-bias",
-      "thumbnail": null,
-      "coverImage": null,
-      "contentFile": "articles/hidden-influence-of-confirmation-bias.md"
+      "contentFile": "articles/who-let-the-dogs-out-effectiveness-of-therapy-dogs.md"
     }
   ]
 }

@@ -10,7 +10,7 @@
 | `/algorithms` | Algorithm and data-structure articles selected from canonical article metadata |
 | `/domains` | Study-domain index |
 | `/domains/[slug]` | A domain overview and articles selected by `article.category` metadata |
-| `/about` | About Overstudied and author Armaandeep Singh |
+| `/about` | About Overstudied and its authors, Armaandeep Singh and Vanshika Chawla |
 
 Study domains currently include Databricks, Snowflake, Quantum Computing, Artificial Intelligence, Hardware, Data Structures and Algorithms, Psychology, System Design, and Quantum Mechanics. Every article belongs to exactly one through its required `category` field.
 

@@ -4,7 +4,7 @@
 | --- | --- |
 | `BaseLayout` | Document metadata, global CSS, navbar, footer, saved theme initialization, and static filtering/search behavior |
 | `Navbar` | Brand, primary route links, desktop search, Light/Dark/Reading segmented toggle, and mobile search shortcut |
-| `Footer` | Company name, important links, author/contact details, and copyright information |
+| `Footer` | Company name, important links, author/contact details for Armaandeep Singh and Vanshika Chawla, and copyright information |
 | `SearchBox` | Accessible search form used in the navbar and mobile page intros |
 | `TopicTabs` | Reusable tab/link row; the homepage uses its interactive filter mode |
 | `ArticleList` | Ordered rendering of article rows |
