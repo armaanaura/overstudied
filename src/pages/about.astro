@@ -1,4 +1,6 @@
 ---
+import armaandeepPhoto from "../Assets/Authors/Armaandeepsingh.jpeg";
+import vanshikaPhoto from "../Assets/Authors/vanshika.jpeg";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
@@ -21,49 +23,80 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </p>
       </section>
 
-      <section id="armaandeep-singh">
-        <p class="page-kicker">Founder and author</p>
-        <h2>Armaandeep Singh</h2>
-        <p>
-          Software developer with experience in machine learning, MLOps, Databricks, and
-          generative AI, with a strong interest in quantum computing and complex technical
-          systems.
-        </p>
-        <a class="text-link" href="https://in.linkedin.com/in/armaanaura" target="_blank" rel="noreferrer">
-          Connect with Armaandeep on LinkedIn
-          <span class="visually-hidden"> (opens in a new tab)</span>
-        </a>
+      <section class="about-author" id="armaandeep-singh">
+        <img
+          class="about-author__image"
+          src={armaandeepPhoto.src}
+          alt="Armaandeep Singh"
+          width={armaandeepPhoto.width}
+          height={armaandeepPhoto.height}
+          loading="lazy"
+        />
+        <div class="about-author__copy">
+          <p class="page-kicker">Founder and author</p>
+          <h2>Armaandeep Singh</h2>
+          <p>
+            Software developer with experience in machine learning, MLOps, Databricks, and
+            generative AI, with a strong interest in quantum computing and complex technical
+            systems.
+          </p>
+          <div class="about-author__links">
+            <a class="text-link" href="https://in.linkedin.com/in/armaanaura" target="_blank" rel="noreferrer">
+              Connect with Armaandeep on LinkedIn
+              <span class="visually-hidden"> (opens in a new tab)</span>
+            </a>
+            <a
+              class="text-link"
+              href="https://www.instagram.com/armaan.unveiled/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Follow Armaandeep on Instagram
+              <span class="visually-hidden"> (opens in a new tab)</span>
+            </a>
+          </div>
+        </div>
       </section>
 
-      <section id="vanshika-chawla">
-        <p class="page-kicker">Psychology author</p>
-        <h2>Vanshika Chawla</h2>
-        <p>
-          I am a part-time clinical psychology student, part-time poet, and full-time
-          overthinker. Whether it is psychology, politics, poetry, or the small issues of
-          everyday life, my mind always has multiple thoughts running at once. I am deeply
-          passionate about psychology and literature, and my eyes always light up when
-          someone mentions either of them.
-        </p>
-        <div class="about-author__links">
-          <a
-            class="text-link"
-            href="https://www.linkedin.com/in/vanshika-chawla-b58565201"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Connect with Vanshika on LinkedIn
-            <span class="visually-hidden"> (opens in a new tab)</span>
-          </a>
-          <a
-            class="text-link"
-            href="https://www.instagram.com/vanshikawww_/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Follow Vanshika on Instagram
-            <span class="visually-hidden"> (opens in a new tab)</span>
-          </a>
+      <section class="about-author" id="vanshika-chawla">
+        <img
+          class="about-author__image"
+          src={vanshikaPhoto.src}
+          alt="Vanshika Chawla"
+          width={vanshikaPhoto.width}
+          height={vanshikaPhoto.height}
+          loading="lazy"
+        />
+        <div class="about-author__copy">
+          <p class="page-kicker">Psychology author</p>
+          <h2>Vanshika Chawla</h2>
+          <p>
+            I am a part-time clinical psychology student, part-time poet, and full-time
+            overthinker. Whether it is psychology, politics, poetry, or the small issues of
+            everyday life, my mind always has multiple thoughts running at once. I am deeply
+            passionate about psychology and literature, and my eyes always light up when
+            someone mentions either of them.
+          </p>
+          <div class="about-author__links">
+            <a
+              class="text-link"
+              href="https://www.linkedin.com/in/vanshika-chawla-b58565201"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Connect with Vanshika on LinkedIn
+              <span class="visually-hidden"> (opens in a new tab)</span>
+            </a>
+            <a
+              class="text-link"
+              href="https://www.instagram.com/vanshikawww_/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Follow Vanshika on Instagram
+              <span class="visually-hidden"> (opens in a new tab)</span>
+            </a>
+          </div>
         </div>
       </section>
     </div>
