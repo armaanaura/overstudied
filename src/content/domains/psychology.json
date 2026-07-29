@@ -2,6 +2,30 @@
   "domain": "psychology",
   "articles": [
     {
+      "title": "Tears Hidden in Art: The Impact of Art on Grief",
+      "excerpt": "Art can provide refuge for emotions that remain unspoken and offer a meaningful way to process grief, loss, and remembrance.",
+      "date": "2026-07-30",
+      "tags": ["Psychology", "Grief", "Art Therapy"],
+      "readTime": "5 min read",
+      "author": { "name": "Vanshika Chawla", "url": "/about#vanshika-chawla" },
+      "slug": "tears-hidden-in-art-impact-of-art-on-grief",
+      "thumbnail": null,
+      "coverImage": null,
+      "contentFile": "articles/tears-hidden-in-art-impact-of-art-on-grief.md"
+    },
+    {
+      "title": "High-Functioning ADHD in Adults",
+      "excerpt": "Individuals with high-functioning ADHD may meet the demands of everyday life while still struggling with inattention, hyperactivity, and substantial internal effort.",
+      "date": "2026-07-30",
+      "tags": ["Psychology", "ADHD", "Executive Functioning"],
+      "readTime": "6 min read",
+      "author": { "name": "Vanshika Chawla", "url": "/about#vanshika-chawla" },
+      "slug": "high-functioning-adhd-in-adults",
+      "thumbnail": null,
+      "coverImage": null,
+      "contentFile": "articles/high-functioning-adhd-in-adults.md"
+    },
+    {
       "title": "Who Let the Dogs Out? The Effectiveness of Therapy Dogs",
       "excerpt": "Cute button-like eyes, wagging tails, and a furball of energy—this image usually stirs multiple positive emotions in most of our minds.",
       "date": "2026-07-26",
