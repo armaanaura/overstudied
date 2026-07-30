@@ -4,7 +4,7 @@ import DomainCard from "../components/DomainCard.astro";
 import SearchBox from "../components/SearchBox.astro";
 import { articles } from "../data/articles";
 import { domains } from "../data/domains";
-import homepageImage from "../Assets/homepage.png";
+import homepageVideo from "../Assets/videos/video-1.mp4";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const homepageArticles = articles.slice(0, 6);
@@ -18,15 +18,16 @@ const homepageDomains = domains.slice(0, 3);
 >
   <main id="main-content" class="home-page">
     <div class="home-hero__media">
-      <img
-        src={homepageImage.src}
-        width={homepageImage.width}
-        height={homepageImage.height}
-        alt="Sketch of notebooks, technical diagrams, charts, and writing tools"
-        loading="eager"
-        decoding="async"
-        fetchpriority="high"
-      />
+      <video
+        src={homepageVideo}
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        aria-hidden="true"
+        data-homepage-video
+      ></video>
       <div class="home-hero__copy">
         <h1>Become disgustingly over educated</h1>
         <p>
@@ -75,4 +76,9 @@ const homepageDomains = domains.slice(0, 3);
       </section>
     </div>
   </main>
+
+  <script>
+    const homepageVideo = document.querySelector<HTMLVideoElement>("[data-homepage-video]");
+    if (homepageVideo) homepageVideo.playbackRate = 0.75;
+  </script>
 </BaseLayout>
