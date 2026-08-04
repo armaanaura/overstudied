@@ -2,6 +2,18 @@
   "domain": "psychology",
   "articles": [
     {
+      "title": "Sleep Debt: a painful loan to repay",
+      "excerpt": "Sleep debt accumulates when the sleep we get falls short of what our bodies need, affecting physical health, cognition, and emotional wellbeing.",
+      "date": "2026-08-05",
+      "tags": ["Psychology", "Sleep", "Mental Health"],
+      "readTime": "6 min read",
+      "author": { "name": "Vanshika Chawla", "url": "/about#vanshika-chawla" },
+      "slug": "sleep-debt-a-painful-loan-to-repay",
+      "thumbnail": null,
+      "coverImage": null,
+      "contentFile": "articles/sleep-debt-a-painful-loan-to-repay.md"
+    },
+    {
       "title": "Tears Hidden in Art: The Impact of Art on Grief",
       "excerpt": "Art can provide refuge for emotions that remain unspoken and offer a meaningful way to process grief, loss, and remembrance.",
       "date": "2026-07-30",
